@@ -1,4 +1,4 @@
 # MayDay
 
-####Master branch build status: 
+#### Build status: 
 ![](https://travis-ci.org/[kalaraja]/MovingHelper.svg?branch=master)
