@@ -1,3 +1,9 @@
+sudo: required
+dist: trusty
+branches:
+  only:
+  - master
+  - develop
 matrix
   include:
     - language: node_js
