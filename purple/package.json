@@ -4,11 +4,14 @@
   "description": "microservice for profile management",
   "main": "index.js",
   "dependencies": {
-    "@types/express": "^4.16.0",
+    
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^3.1.6",
+    "@types/express": "^4.16.0"
+  },
   "scripts": {
     "build": "tsc",
     "start": "node dist/server/server.js",
