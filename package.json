@@ -4,7 +4,6 @@
   "description": "microservice for profile management",
   "main": "index.js",
   "dependencies": {
-    
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
@@ -15,7 +14,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:watch": "nodemon dist/server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:daemon": "forever start --uid \"purple\" dist/server/server.js --id \"purple\"",
+    "stop:daemon": "forever stop \"purple\""
   },
   "author": "shashank shekhar, KalaRaja",
   "license": "Apache 2.0"
