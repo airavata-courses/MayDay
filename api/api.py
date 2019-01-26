@@ -1,5 +1,5 @@
 import flask
-from flask import request, jsonify
+from flask import request, jsonify, make_response
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -30,10 +30,14 @@ def home():
 <p>A prototype API for rating services provided.</p>'''
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
+
 # A route to return all of the available entries.
 @app.route('/api/v1/services/rating/all', methods=['GET'])
 def api_all():
-    return jsonify(ratings)
+    return make_response(jsonify(ratings),200)
 
 # A route to return entry for a specific user id.
 @app.route('/api/v1/services/rating', methods=['GET'])
@@ -50,7 +54,7 @@ def api_id():
 
     # Use the jsonify function from Flask to convert our list of
     # Python dictionaries to the JSON format.
-    return jsonify(results)
+    return jsonify(results),200
 
 
 app.run()
