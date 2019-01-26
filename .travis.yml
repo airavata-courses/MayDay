@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+ - '10'
+sudo: required
+dist: trusty
+branches:
+ only:
+ - develop-microservice-purple
+ - "/develop-microservice-purple-.+/"
+install:
+ - npm install
+ - npm install -g forever
+ - npm install -g nodemon
+script:
+ - npm run build
+ - npm run start:daemon
+ 
