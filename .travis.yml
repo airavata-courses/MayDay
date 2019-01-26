@@ -12,6 +12,6 @@ install:
  - npm install -g forever
  - npm install -g nodemon
 script:
- - npm run build
+ - tsc
  - npm run start:daemon
  
