@@ -16,7 +16,7 @@
     "start": "node dist/server/server.js",
     "start:watch": "nodemon dist/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:daemon": "forever start --uid \"purple\" dist/server/server.js --id \"purple\"",
+    "start:daemon": "forever --id \"purple\" start dist/server/server.js",
     "stop:daemon": "forever stop \"purple\""
   },
   "author": "shashank shekhar, KalaRaja",
