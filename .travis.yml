@@ -9,6 +9,9 @@ install:
  - pip install waitress
  - pip install msgpack
  - pip install falcon
+before_script:
+ - chmod 755 ./test_blue
+ - chmod 755 ./__init__.py
 script:
  - ./server/__init__.py
  - sleep 4
