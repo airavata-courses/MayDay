@@ -2,7 +2,15 @@ import json
 import msgpack
 import falcon
 
+try:
+    from collections import OrderedDict
+except ImportError:
+    OrderedDict = dict
+
 class Search(object):
+
+    def to_json(self, body_dict):
+        return json.dumps(body_dict)
 
     def on_get(self, req, resp):
         doc = {
@@ -32,3 +40,17 @@ class Search(object):
         # status returned by the framework, but it is included here to
         # illustrate how this may be overridden as needed.
         resp.status = falcon.HTTP_200
+
+
+    def on_post(self, req, res):
+        posted_data = json.loads(req.stream.read())
+        #print(str(type(posted_data)))
+        #print(posted_data)
+        obj ={
+            "code" : 200,
+            "message" : "OK",
+            "userid":posted_data
+        }
+        
+        res.body = json.dumps(obj, ensure_ascii=False)
+        res.status = falcon.HTTP_200
