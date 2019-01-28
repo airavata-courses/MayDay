@@ -12,5 +12,4 @@ install:
 script:
 # - nohup ./server/__init__.py &
  - sleep 4
-after_script:
  - ./test_blue
