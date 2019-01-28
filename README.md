@@ -3,18 +3,18 @@
 ### Make sure you have isolated python environment 
 execute following command to install falcon and setup virtual environment
 
-pip install falcon
-pip install virtualenv
-virtualenv .venv
+pip install falcon  <br /> 
+pip install virtualenv  <br /> 
+virtualenv .venv  <br /> 
 
 ### To Run the code
 ### waitress-serve --port=PORT MODULE:OBJECT
 
-pip install waitress
-waitress-serve --port=8000 server.app:api
+pip install waitress  <br /> 
+waitress-serve --port=8000 server.app:api  <br /> 
 
 ### GET response
-http://localhost:8000/search/recent
+http://localhost:8000/search/recent  <br /> 
 
 Sample Resposne:
 {
@@ -42,14 +42,14 @@ Sample Resposne:
         }
     ]
 }
-
+ <br /> 
 ### POST request
-http://localhost:8000/search/recent
+http://localhost:8000/search/recent  <br /> 
 Sample request
 {
 	"userid" : 1
 }
-
+ <br /> 
 Sample response
 {
     "message": "OK",
