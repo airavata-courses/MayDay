@@ -4,7 +4,8 @@
 execute following command to install falcon and setup virtual environment
 
 pip install falcon
-virtual .venv
+pip install virtualenv
+virtualenv .venv
 
 ### To Run the code
 ### waitress-serve --port=PORT MODULE:OBJECT
