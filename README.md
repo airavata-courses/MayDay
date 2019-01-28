@@ -1,12 +1,15 @@
 ### Search management microservice codenamed: Blue
 
 ### Make sure you have isolated python environment 
-execute following command
+execute following command to install falcon and setup virtual environment
 
+pip install falcon
 virtual .venv
 
 ### To Run the code
 ### waitress-serve --port=PORT MODULE:OBJECT
+
+pip install waitress
 waitress-serve --port=8000 server.app:api
 
 ### GET response
