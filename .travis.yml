@@ -1,0 +1,14 @@
+language: python
+python:
+ - "2.7"
+branches:
+ only:
+  - develop-microservice-blue
+  - "/develop-microservice-blue-.+/"
+install:
+  - pip install waitress
+# command to run tests
+script:
+  - waitress-serve --port=8000 server.app:api 
+after_script:
+  - ./test_blue
