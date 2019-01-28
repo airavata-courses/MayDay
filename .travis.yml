@@ -8,6 +8,8 @@ branches:
 install:
   - pip install waitress
 # command to run tests
+before_script:
+ - cd ./server
 script:
   - waitress-serve --port=8000 server.app:api 
 after_script:
