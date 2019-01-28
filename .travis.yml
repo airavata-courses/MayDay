@@ -6,10 +6,11 @@ branches:
   - develop-microservice-blue
   - "/develop-microservice-blue-.+/"
 install:
-  - pip install waitress
-  - pip install msgpack
-  - pip install falcon
+ - pip install waitress
+ - pip install msgpack
+ - pip install falcon
 script:
-  - nohup ./server/__init__.py &
+ - nohup ./server/__init__.py &
+ - sleep 4
 after_script:
-  - ./test_blue
+ - ./test_blue
