@@ -46,10 +46,10 @@ class Search(object):
             #print(str(type(posted_data)))
             #print(posted_data)
             obj ={
-                "code" : 200,
+                "code" : 201,
                 "message" : "OK",
                 "userid":posted_data
             }
             
             res.body = json.dumps(obj, ensure_ascii=False)
-            res.status = falcon.HTTP_200
+            res.status = falcon.HTTP_201
