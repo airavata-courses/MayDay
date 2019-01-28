@@ -2,15 +2,7 @@ import json
 import msgpack
 import falcon
 
-try:
-    from collections import OrderedDict
-except ImportError:
-    OrderedDict = dict
-
 class Search(object):
-
-    def to_json(self, body_dict):
-        return json.dumps(body_dict)
 
     def on_get(self, req, resp):
         doc = {
@@ -33,7 +25,7 @@ class Search(object):
             ]
         }
 
-        # Create a JSON representation of the resource
+        # Create a JSON representation of the response
         resp.body = json.dumps(doc, ensure_ascii=False)
 
         # The following line can be omitted because 200 is the default
@@ -44,13 +36,20 @@ class Search(object):
 
     def on_post(self, req, res):
         posted_data = json.loads(req.stream.read())
-        #print(str(type(posted_data)))
-        #print(posted_data)
-        obj ={
-            "code" : 200,
-            "message" : "OK",
-            "userid":posted_data
-        }
-        
-        res.body = json.dumps(obj, ensure_ascii=False)
-        res.status = falcon.HTTP_200
+        if "userid" not in posted_data:
+            errmsg = {
+                "msg" : "Invalid request format"
+            }
+            res.status = falcon.HTTP_400
+            res.body = json.dumps(errmsg, ensure_ascii=False)
+        else:
+            #print(str(type(posted_data)))
+            #print(posted_data)
+            obj ={
+                "code" : 200,
+                "message" : "OK",
+                "userid":posted_data
+            }
+            
+            res.body = json.dumps(obj, ensure_ascii=False)
+            res.status = falcon.HTTP_200
