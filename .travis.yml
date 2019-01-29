@@ -10,7 +10,6 @@ install:
  - pip install msgpack
  - pip install falcon
 script:
- - python ./server/__init__.py &
- - sleep 4
+ - python ./server/__init__.py
 after_script:
  - ./test_blue
