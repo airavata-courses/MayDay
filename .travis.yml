@@ -10,11 +10,11 @@ install:
  - pip install msgpack
  - pip install falcon
 before_script:
- - chmod -x ./test_blue
- - ls -ltr ./server/
- - chmod -x ./server/__init__.py
+ - chmod +x ./test_blue
+ - ls -ltr ./server
+ - chmod +x ./server/__init__.py
 script:
- - ./server/__init__.py
+ - nohup ./server/__init__.py &
  - sleep 4
 after_script:
  - ./test_blue
