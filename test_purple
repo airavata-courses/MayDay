@@ -1,6 +1,10 @@
 #!/bin/bash
 
-status_code=`curl -s -o /dev/null -w "%{http_code}" localhost:3000/test`
+if [ -z "$PORT" ]; then
+	DEP_PORT=$PORT
+else
+	DEP_PORT=3000
+status_code=`curl -s -o /dev/null -w "%{http_code}" localhost:$DEP_PORT/test`
 if [[ $status_code == "200" ]];  then
 	exit 0
 else
