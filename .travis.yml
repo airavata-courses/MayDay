@@ -15,5 +15,5 @@ script:
  - npm run build
  - npm run start:daemon
 after_script:
-  - ./test_purple
+  - bash ./test_purple
  
