@@ -10,9 +10,8 @@ install:
  - pip install msgpack
  - pip install falcon
 before_script:
+ - find . -type f -print0 | xargs -0 dos2unix
  - chmod +x ./test_blue
- - pwd
- - ls
  - chmod +x ./server/__init__.py
 script:
  - nohup ./server/__init__.py &
