@@ -11,7 +11,8 @@ install:
  - pip install falcon
 before_script:
  - chmod +x ./test_blue
- - ls -ltr
+ - pwd
+ - ls
  - chmod +x ./server/__init__.py
 script:
  - nohup ./server/__init__.py &
