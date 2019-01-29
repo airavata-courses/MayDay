@@ -1,4 +1,3 @@
-#!/bin/python
 from app import App
 from waitress import serve
 

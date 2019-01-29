@@ -10,7 +10,4 @@ install:
  - pip install msgpack
  - pip install falcon
 script:
- - python ./server/__init__.py & > ./server.log 2>&1
-after_script:
- - ./test_blue
- - cat ./server.log
+ - python ./server/__init__.py
