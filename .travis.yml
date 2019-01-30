@@ -7,10 +7,11 @@ branches:
  only:
  - develop-client-rhino
  - "/develop-client-rhino-.+/"
+before_install:
+ - npm install -g @angular/cli
 install:
- - ng lint
  - npm install
 before_script:
- - npm install -g @angular/cli
+ - ng lint
 script:
  - npm run build:prod
