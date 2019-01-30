@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyMaterialModule } from  './material.module';
+import { MyMaterialModule } from './material.module';
 
 
 @NgModule({
