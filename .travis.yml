@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+ - '10'
+sudo: required
+dist: trusty
+branches:
+ only:
+ - develop-client-rhino
+ - "/develop-client-rhino-.+/"
+before_install:
+ - npm install -g @angular/cli
+install:
+ - npm install
+before_script:
+ - ng lint
+script:
+ - npm run build:prod
+notifications:
+ email: false
+ slack:
+   on_success: always
+   on_failure: always
