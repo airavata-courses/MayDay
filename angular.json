@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MayDay": {
+    "rhino": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MayDay",
+            "outputPath": "dist/rhino",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MayDay:build"
+            "browserTarget": "rhino:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MayDay:build:production"
+              "browserTarget": "rhino:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MayDay:build"
+            "browserTarget": "rhino:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "MayDay-e2e": {
+    "rhino-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -113,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MayDay:serve"
+            "devServerTarget": "rhino:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MayDay:serve:production"
+              "devServerTarget": "rhino:serve:production"
             }
           }
         },
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "MayDay"
+  "defaultProject": "rhino"
 }
