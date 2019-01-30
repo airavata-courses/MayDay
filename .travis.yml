@@ -15,3 +15,8 @@ before_script:
  - ng lint
 script:
  - npm run build:prod
+notifications:
+ email: false
+ slack:
+   on_success: always
+   on_failure: always
