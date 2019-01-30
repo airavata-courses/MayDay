@@ -10,5 +10,7 @@ branches:
 install:
  - ng lint
  - npm install
+before_script:
+ - npm install -g @angular/cli
 script:
  - npm run build:prod
