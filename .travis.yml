@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+ - '10'
+sudo: required
+dist: trusty
+branches:
+ only:
+ - develop-client-rhino
+ - "/develop-client-rhino-.+/"
+install:
+ - ng lint
+ - npm install
+script:
+ - npm run build:prod
