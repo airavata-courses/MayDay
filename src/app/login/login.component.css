@@ -1,0 +1,33 @@
+
+.login-main{
+    display: flex;
+    width: 100%;
+} 
+.login-image{
+    width: 80%;
+    height: 100%;
+    /* margin-left: 10%; */
+}
+.main-div{
+    height: 60vh;
+    display: grid;
+    justify-content: right;
+    align-items: right;
+    margin-top: 5em; 
+    margin-left: 2%;
+    /* margin-top: 3%; */
+  }
+  .center{
+    width: 130%;
+    padding: 2em;
+
+    
+    /* margin: 10px auto; */
+  }
+.footer{
+    position: absolute;
+    bottom: 0px;
+    font-size: 10px;
+    color: grey;
+    align-content: center;
+}
