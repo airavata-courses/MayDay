@@ -1,1 +1,1 @@
-web:  gunicorn server.__init__:app
+web:  waitress-serve --port=8000 server.__init__:app

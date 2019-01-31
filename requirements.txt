@@ -1,3 +1,4 @@
 falcon
 msgpack
 gunicorn
+waitress
