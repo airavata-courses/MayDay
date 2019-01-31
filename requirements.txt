@@ -1,6 +1,3 @@
-django
-gunicorn
-django-heroku
 falcon
 msgpack
 waitress

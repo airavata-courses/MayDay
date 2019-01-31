@@ -1,1 +1,0 @@
-web: python manage.py ./server/__init__.py
