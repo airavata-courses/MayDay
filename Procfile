@@ -1,1 +1,1 @@
-web: python manage.py ./server/__init__.py
+web: python ./server/__init__.py
