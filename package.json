@@ -18,7 +18,7 @@
     "@types/lodash": "^4.14.120"
   },
   "scripts": {
-    "build": "./node_modules/typescript/bin/ts1",
+    "build": "./node_modules/typescript/bin/tsc",
     "start": "npm run build && node ./dist/server/server.js",
     "start:only": "node ./dist/server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
