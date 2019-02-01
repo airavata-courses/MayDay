@@ -10,12 +10,17 @@ export class Search {
     constructor(type: string, requestParams: any, uid: string = 'none') {
         this.requestParams = requestParams;
         this.requestOptions = {
-            uri: this.getRestURL(type, uid) + '?' + this.createRequestUri() + '&user_key=9b42a26b03720362acc1afe40bd3372a',
+            uri: this.getRestURL(type, uid) + '?' + this.createRequestUri() + '&user_key='+this.getApiKey(),
             method: 'GET',
             json: true
         }
     }
 
+    getApiKey(): string {
+        const content = fs.readFileSync('server.json', 'utf-8');
+        const restConfig = JSON.parse(content);
+        return restConfig['better-doctor-api-key'];
+    }
     getRestURL(type: string, uid: string): string {
         const content = fs.readFileSync('server.json', 'utf-8');
         const restConfig = JSON.parse(content);
