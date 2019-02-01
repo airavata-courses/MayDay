@@ -11,10 +11,10 @@ export class Routes {
     routes(app: Application): void {
 
         app.route('/test').get((req: Request, res: Response) => {
-            res.status(200);
+            res.status(200).send('OK');
         });
 
-        /*app.route('/*').post(async (req: Request, res: Response) => {
+        app.route('/*').post(async (req: Request, res: Response) => {
             const paramsFromRequest: any = req.body;
             const path = req.path.replace(/\//g,'');
             console.log(path);
@@ -33,6 +33,6 @@ export class Routes {
                 jsonData = {'error': err+''};
             });  
             res.status(status).send(jsonData);
-        });*/
+        });
     }
 }
