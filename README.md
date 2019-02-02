@@ -10,7 +10,7 @@ virtualenv .venv  <br />
 ### To Run the code
 python ./server/__init__.py  <br /> 
 
-### GET response
+### GET Request and Response
 http://localhost:8000/search/recent  <br /> 
 
 Sample Resposne:
@@ -45,9 +45,11 @@ Sample Resposne:
 	}
 	
  <br /> 
-### POST request
+ 
+### POST Request and Response
 http://localhost:8000/search/recent  <br /> 
-Sample request
+
+Sample Request: 
 		
 
 	  {
@@ -67,7 +69,8 @@ Sample request
             ]
 	}
  <br /> 
-Sample response
+ 
+Sample Response:
 
 	{
 	    "message": "Created",
