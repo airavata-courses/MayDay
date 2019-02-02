@@ -1,18 +1,15 @@
 import json
 import msgpack
 import falcon
-
+import time
+from collections import OrderedDict
 
 class Search(object):
     
     
     def on_get(self, req, resp):
-        # Create a JSON representation of the response
-        resp.body = json.dumps(doc, ensure_ascii=False)
-
-        # The following line can be omitted because 200 is the default
-        # status returned by the framework, but it is included here to
-        # illustrate how this may be overridden as needed.
+        resp.set_header('response', '200 OK')
+        resp.body = json.dumps(OrderedDict(doc), ensure_ascii=False)
         resp.status = falcon.HTTP_200
 
 
@@ -22,6 +19,7 @@ class Search(object):
             errmsg = {
                 "msg" : "Invalid request format"
             }
+            res.set_header('response', '400')
             res.status = falcon.HTTP_400
             res.body = json.dumps(errmsg, ensure_ascii=False)
         else:
@@ -31,19 +29,19 @@ class Search(object):
             
             obj ={
                 "code" : 201,
-                "message" : "OK",
+                "message" : "Created",
                 "data":posted_data
             }
 
-            idn = idnum + 1
             recent_result = {
-                "id" : idn,
+                "userid":obj["data"]["recent_result"][0]["userid"],
                 "string_string":obj["data"]["recent_result"][0]["string_string"],
                 "req_param":obj["data"]["recent_result"][0]["req_param"],
-                "endpoint":str(obj["data"]["recent_result"][0]["endpoint"])
+                "endpoint":str(obj["data"]["recent_result"][0]["endpoint"]),
+                "timestamp":time.asctime( time.localtime(time.time()) )
             }
-            
-            res.body = json.dumps(obj, ensure_ascii=False)
+            res.set_header('response', '201 Created')
+            res.body = json.dumps(OrderedDict(obj), ensure_ascii=False)
             res.status = falcon.HTTP_201
             
             search.data_insertion(recent_result)
@@ -54,14 +52,14 @@ class Search(object):
         print doc
 
 
-idnum = 0
 doc = { 
             "recent_result":[
                 {
-                    "id" : idnum,
+                    "userid":"roja.raman@iu.edu",
                     "string_string":"obstetrics",
-                    "req_param":"{'location':'37.773,-122.413,100','user_location':'37.773,-122.413','skip':'0','limit':'10'}",
-                    "endpoint":"https://paas-purple.herokuapp.com/alldoctors"
+                    "req_param":{'location':'37.773,-122.413,100','user_location':'37.773,-122.413','skip':'0','limit':'10'},
+                    "endpoint":"/alldoctors",
+                    "timestamp":""
                 }
             ]
         }
