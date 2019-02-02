@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angular-6-social-login';
+import { GoogleEventsService } from 'src/app/services/google-events/google-events.service';
 
 @Component({
   selector: 'app-google-login',
@@ -8,24 +9,7 @@ import { AuthService, GoogleLoginProvider, SocialUser } from 'angular-6-social-l
 })
 export class GoogleLoginComponent {
 
-  constructor( private socialAuthService: AuthService ) {}
+  constructor(private googleSignup: GoogleEventsService) {}
   
-  socialSignIn() {
-    const socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData: SocialUser) => {
-        console.log(' Google sign in data : ' , userData);
-        // Now sign-in with userData
-        // ...
-            
-      }
-    );
-  }
-
-  socialSignout() {
-    this.socialAuthService.signOut().then((data: any) => {
-      console.log(data);
-    });
-  }
+  
 }

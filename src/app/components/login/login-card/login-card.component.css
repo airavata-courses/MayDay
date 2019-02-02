@@ -1,0 +1,63 @@
+
+.login-form {
+  padding-bottom: 4rem;
+}
+.login-form mat-form-field, .login-form button {
+    width: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.divider {
+    position: inherit !important;
+    width: 80% !important;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.divider-text {
+    color: #3f51b5;
+}
+/* google button */
+.google-button {
+  width: 80%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+    
+.google-button__icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0.5rem 0.5rem;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+}
+
+.google-button__icon--plus {
+  width: 27px;
+}
+
+.google-button__text {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 24px;
+  font-size: 14px;
+  font-family: 'Roboto',arial,sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button ~ button {
+  margin-left: 20px;
+}
