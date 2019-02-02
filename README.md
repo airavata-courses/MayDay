@@ -8,37 +8,37 @@ pip install virtualenv  <br />
 virtualenv .venv  <br /> 
 
 ### To Run the code
-### waitress-serve --port=PORT MODULE:OBJECT
-
-pip install waitress  <br /> 
-waitress-serve --port=8000 server.app:api  <br /> 
+python ./server/__init__.py  <br /> 
 
 ### GET response
 http://localhost:8000/search/recent  <br /> 
 
 Sample Resposne:
 {
-    "recent_doctor_result": [
-        {
-            "rating": "5",
-            "doctor_id": "01",
-            "specialisation": "Neurologist",
-            "id": 0,
-            "doctor": "John Doe"
+    "recent_result": [
+         {
+            "string_string": "GYN",
+            "endpoint": "/alldoctors",
+            "userid": "xxxx@gmail.com",
+            "timestamp": "Sat Feb  2 17:22:55 2019",
+            "req_param": {
+                "skip": "0",
+                "limit": "10",
+                "user_location": "37.773,-122.413",
+                "location": "37.773,-122.413,100"
+            }
         },
         {
-            "rating": "5",
-            "doctor_id": "02",
-            "specialisation": "Cardiologist",
-            "id": 1,
-            "doctor": "Abc Def"
-        },
-        {
-            "rating": "5",
-            "doctor_id": "03",
-            "specialisation": "ENT",
-            "id": 1,
-            "doctor": "Xyz xyz"
+            "string_string": "ENT",
+            "endpoint": "/alldoctors",
+            "userid": "abc@gmail.com",
+            "timestamp": "Sat Feb  2 17:14:06 2019",
+            "req_param": {
+                "skip": "0",
+                "limit": "10",
+                "user_location": "37.773,-122.413",
+                "location": "37.773,-122.413,100"
+            }
         }
     ]
 }
@@ -47,14 +47,40 @@ Sample Resposne:
 http://localhost:8000/search/recent  <br /> 
 Sample request
 {
-	"userid" : 1
-}
+		"recent_result":[
+                {
+              
+                    "string_string":"ENT",
+                    "userid":"abc@gmail.com",
+                    "req_param":
+                    	{
+                    		"location":"37.773,-122.413,100",
+                    		"user_location":"37.773,-122.413",
+                    		"skip":"0","limit":"10"
+                    		
+                    	},
+                    "endpoint":"/alldoctors"
+                }
+            ]
+	}
  <br /> 
 Sample response
 {
-    "message": "OK",
-    "code": 200,
-    "userid": {
-        "userid": 1
+    "message": "Created",
+    "code": 201,
+    "data": {
+        "recent_result": [
+            {
+                "userid": "abc@gmail.com",
+                "endpoint": "/alldoctors",
+                "string_string": "ENT",
+                "req_param": {
+                    "skip": "0",
+                    "limit": "10",
+                    "user_location": "37.773,-122.413",
+                    "location": "37.773,-122.413,100"
+                }
+            }
+        ]
     }
 }
