@@ -1,6 +1,6 @@
 #!/bin/bash
 
-status_code=`curl -s -o /dev/null -w "%{http_code}" localhost:8000/test`
+status_code=`curl -s -o /dev/null -w "%{http_code}" localhost:8001/test`
 if [[ $status_code == "200" ]];  then
 	exit 0
 else

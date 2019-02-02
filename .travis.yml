@@ -10,7 +10,4 @@ install:
  - pip install msgpack
  - pip install falcon
 script:
- - nohup ./server/__init__.py &
- - sleep 4
-after_script:
- - ./test_blue
+ - python ./server/__init__.py &
