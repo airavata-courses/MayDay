@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angular-6-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home/home-page/home-page.component';
-import { ToolbarComponent } from './components/toolbar/toolbar/toolbar.component';
+import { LoginPageComponent } from './components/login/login-page/login-page.component';
 import { GoogleLoginComponent } from './components/toolbar/google-login/google-login.component';
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider,
-} from 'angular-6-social-login';
 import { GoogleIconComponent } from './components/toolbar/google-login/icons/google-icon/google-icon.component';
+import { ToolbarComponent } from './components/toolbar/toolbar/toolbar.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -34,7 +38,8 @@ export function getAuthServiceConfigs() {
     HomePageComponent,
     ToolbarComponent,
     GoogleLoginComponent,
-    GoogleIconComponent
+    GoogleIconComponent,
+    LoginPageComponent
     
   ],
   imports: [
@@ -42,7 +47,15 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    SocialLoginModule
+    SocialLoginModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [{
       provide: AuthServiceConfig,

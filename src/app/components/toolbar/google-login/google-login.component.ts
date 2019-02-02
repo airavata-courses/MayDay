@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  AuthService,
-  FacebookLoginProvider,
-  GoogleLoginProvider
-} from 'angular-6-social-login';
+import { AuthService, GoogleLoginProvider, SocialUser } from 'angular-6-social-login';
 
 @Component({
   selector: 'app-google-login',
@@ -14,21 +10,22 @@ export class GoogleLoginComponent {
 
   constructor( private socialAuthService: AuthService ) {}
   
-  public socialSignIn(socialPlatform : string) {
-    let socialPlatformProvider;
-    if(socialPlatform === 'facebook'){
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    }else if(socialPlatform === 'google'){
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    } 
+  socialSignIn() {
+    const socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        console.log(socialPlatform+' sign in data : ' , userData);
+      (userData: SocialUser) => {
+        console.log(' Google sign in data : ' , userData);
         // Now sign-in with userData
         // ...
             
       }
     );
+  }
+
+  socialSignout() {
+    this.socialAuthService.signOut().then((data: any) => {
+      console.log(data);
+    });
   }
 }
