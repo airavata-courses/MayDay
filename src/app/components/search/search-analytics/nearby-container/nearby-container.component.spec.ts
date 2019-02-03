@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoogleIconComponent } from './google-icon.component';
+import { NearbyContainerComponent } from './nearby-container.component';
 
-describe('GoogleIconComponent', () => {
-  let component: GoogleIconComponent;
-  let fixture: ComponentFixture<GoogleIconComponent>;
+describe('NearbyContainerComponent', () => {
+  let component: NearbyContainerComponent;
+  let fixture: ComponentFixture<NearbyContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoogleIconComponent ]
+      declarations: [ NearbyContainerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GoogleIconComponent);
+    fixture = TestBed.createComponent(NearbyContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,6 +1,6 @@
 .app-login-page-wrapper {
     width: 100vw;
-    height: calc(100vh - 2.5rem);
+    height: 100vh;
     background-image: url('../../../../assets/images/homebg.jpg');
     background-repeat: no-repeat;
     background-size: cover;

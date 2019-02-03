@@ -1,4 +1,6 @@
 .app-toolbar-wrapper {
-    background-color: #0064b7;
-    height: 2.5rem;
+    height: 3.5rem;
+}
+.app-name {
+    margin-right: 84rem;
 }

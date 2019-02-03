@@ -18,9 +18,16 @@ import { HomePageComponent } from './components/home/home-page/home-page.compone
 import { LoginCardComponent } from './components/login/login-card/login-card.component';
 import { LoginPageComponent } from './components/login/login-page/login-page.component';
 import { SignupCardComponent } from './components/login/signup-card/signup-card.component';
-import { GoogleLoginComponent } from './components/toolbar/google-login/google-login.component';
-import { GoogleIconComponent } from './components/toolbar/google-login/icons/google-icon/google-icon.component';
+import { AccountOptionComponent } from './components/toolbar/account-option/account-option.component';
+import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar/toolbar.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchToolboxComponent } from './components/search/search-toolbox/search-toolbox.component';
+import { SearchAnalyticsComponent } from './components/search/search-analytics/search-analytics.component';
+import { SearchResultBoxComponent } from './components/search/search-result-box/search-result-box.component';
+import { NearbyContainerComponent } from './components/search/search-analytics/nearby-container/nearby-container.component';
+import { SearchHistoryContainerComponent } from './components/search/search-analytics/search-history-container/search-history-container.component';
+import { SearchTrendingContainerComponent } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -40,11 +47,18 @@ export function getAuthServiceConfigs() {
     AppComponent,
     HomePageComponent,
     ToolbarComponent,
-    GoogleLoginComponent,
-    GoogleIconComponent,
     LoginPageComponent,
     LoginCardComponent,
-    SignupCardComponent
+    SignupCardComponent,
+    NavbarComponent,
+    AccountOptionComponent,
+    SearchComponent,
+    SearchToolboxComponent,
+    SearchAnalyticsComponent,
+    SearchResultBoxComponent,
+    NearbyContainerComponent,
+    SearchHistoryContainerComponent,
+    SearchTrendingContainerComponent
 
   ],
   imports: [
