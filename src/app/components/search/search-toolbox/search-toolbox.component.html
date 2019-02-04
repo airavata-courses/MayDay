@@ -1,3 +1,40 @@
-<p>
-  search-toolbox works!
-</p>
+<div class="searchpanel">
+  <form class="search-form">
+    <mat-card>
+      <label>Search</label>
+      <mat-form-field class="search-form-main">
+
+        <input matInput placeholder="Doctor or Drug Name">
+        <mat-hint>Enter keyword</mat-hint>
+
+      </mat-form-field>
+      <mat-radio-group>
+        <mat-radio-button value="1">Doctor</mat-radio-button>
+        <mat-radio-button value="2">Drug</mat-radio-button>
+      </mat-radio-group>
+      <button mat-raised-button>SEARCH</button>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+
+            <mat-panel-title>
+              Advanced Search
+            </mat-panel-title>
+            <mat-panel-description>
+              Refine your search with more option
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-form-field class="search-form-adv">
+            <input matInput placeholder="Practice">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Zip Code">
+          </mat-form-field>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </mat-card>
+  </form>
+</div>
