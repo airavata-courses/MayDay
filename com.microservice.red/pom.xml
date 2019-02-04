@@ -7,8 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>com.microservice.red Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
-  
+    
   <dependencies>
  
     <dependency>
@@ -35,7 +34,18 @@
 		<artifactId>jersey-hk2</artifactId>
 		<version>2.27</version>
 	</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-moxy -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>2.28</version>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.15</version>
+	</dependency>
 	
   </dependencies>
   
