@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angular-6-social-login';
@@ -28,6 +29,7 @@ import { SearchResultBoxComponent } from './components/search/search-result-box/
 import { NearbyContainerComponent } from './components/search/search-analytics/nearby-container/nearby-container.component';
 import { SearchHistoryContainerComponent } from './components/search/search-analytics/search-history-container/search-history-container.component';
 import { SearchTrendingContainerComponent } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
+import { MyMaterialModule } from './material.module';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -75,7 +77,9 @@ export function getAuthServiceConfigs() {
     MatIconModule,
     MatButtonModule,
     MatDividerModule,
-    MatTabsModule
+    MatTabsModule,
+    MyMaterialModule,
+    MatExpansionModule
   ],
   providers: [{
     provide: AuthServiceConfig,

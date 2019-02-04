@@ -1,0 +1,63 @@
+.searchpanel{
+    padding: 7em;
+    top: 20%;
+    opacity: 0.9;
+}
+.searchpanel:hover{
+    opacity: 1;
+}
+button{
+    margin-left: 8em;
+    background-color: #FF0266;
+    color: white;
+    opacity: 0.8;
+
+}
+
+mat-card label{
+    margin-right: 5%;
+    margin-left: 3%;
+    
+}
+mat-card div{
+    margin-top: 1%;
+    min-width: 60%;
+    max-width: 80%;
+    display: flex;
+}
+
+.search-form {
+    min-width: 80%;
+    max-width: 100%;
+    width: 100%;
+  }
+  .search-full-width {
+    width: 100%;
+  }
+  ::ng-deep .search-form-main .mat-form-field-wrapper{
+    width:400px !important;
+  }
+  ::ng-deep .search-form-main .mat-form-field-wrapper{
+    width:400px !important;
+  }
+  ::ng-deep .search-form-adv .mat-form-field-wrapper{
+    width:400px !important;
+    margin-right: 2em;
+  }
+
+  ::ng-deep .mat-accordion .mat-expansion-panel{
+      margin-left:2em !important;
+      margin-top: 2em !important;
+  }
+  ::ng-deep .mat-radio-group .mat-radio-button{
+    margin-left:2em !important;
+  }
+ ::ng-deep .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle  {
+    border-color:  rgb(66, 134, 244) !important;
+}
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: rgb(66, 134, 244);
+  }
+ ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:rgba(66, 134, 244,.26);
+  }
