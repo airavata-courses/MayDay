@@ -8,9 +8,11 @@ class Search(object):
     
     
     def on_get(self, req, resp):
-        resp.set_header('response', '200 OK')
-        resp.body = json.dumps(OrderedDict(doc), ensure_ascii=False)
-        resp.status = falcon.HTTP_200
+        with open('data.json') as json_file:  
+            data = json.load(json_file)
+            resp.set_header('response', '200 OK')
+            resp.body = json.dumps(OrderedDict(data), ensure_ascii=False,sort_keys=True, indent=4)
+            resp.status = falcon.HTTP_200
 
 
     def on_post(self, req, res):
@@ -21,7 +23,7 @@ class Search(object):
             }
             res.set_header('response', '400')
             res.status = falcon.HTTP_400
-            res.body = json.dumps(errmsg, ensure_ascii=False)
+            res.body = json.dumps(errmsg, ensure_ascii=False,sort_keys=True, indent=4)
         else:
             #print(str(type(posted_data)))
             #print(posted_data) 
@@ -47,9 +49,11 @@ class Search(object):
             search.data_insertion(recent_result)
             
     def data_insertion(self, data_response):
-        print data_response
+        #print data_response
         doc["recent_result"].append(data_response)
-        print doc
+        with open('data.json', 'w') as outfile:  
+            json.dump(doc, outfile , sort_keys=True, indent=4)
+            outfile.close()
 
 
 doc = { 
