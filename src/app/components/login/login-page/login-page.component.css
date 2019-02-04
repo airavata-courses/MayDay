@@ -9,7 +9,7 @@
 .tab-group-container {
     position: relative;
     width: 20%;
-    left: 40%;
+    left: 70%;
     background: #fff;
     height: 33rem;
     top: 8rem;
@@ -19,4 +19,12 @@
 
 .profile-icon {
     padding-right: 0.5rem;
+}
+
+.login-overlay {
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to left, rgba(0,0,0,01) 35%, rgba(255,255,255,0) 100%);
 }
