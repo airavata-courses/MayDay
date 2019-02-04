@@ -13,7 +13,8 @@ public class MSTest {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getMsg() {
-		return Response.status(200).build();
+		//return Response.status(200).build();
+		return Response.status(200).header("Response", "200 OK").build();
  
 	}
 }
