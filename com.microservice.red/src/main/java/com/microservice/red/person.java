@@ -1,4 +1,4 @@
-package com.microservice.red.test;
+package com.microservice.red;
 
 import java.sql.Date;
 import java.sql.Time;
