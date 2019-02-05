@@ -1,19 +1,22 @@
 import { Request, Response, Application, response } from 'express';
 import { Search } from '../gateway/better-doctor';
 import * as _ from 'lodash';
+import * as cors from 'cors';
 
 export class Routes {
 
     alllowedPaths: string[];
     constructor() {
+        
         this.alllowedPaths = ['alldoctors', 'specificdoctor', 'allpractices', 'specificpractice', 'doctorsinpractice', ]
     }
     routes(app: Application): void {
-
+        app.use(cors());
+        app.options('*', cors());
         app.route('/test').get((req: Request, res: Response) => {
             res.status(200).send('OK');
         });
-
+        
         app.route('/*').post(async (req: Request, res: Response) => {
             const paramsFromRequest: any = req.body;
             const path = req.path.replace(/\//g,'');
