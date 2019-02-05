@@ -10,7 +10,7 @@ import { GoogleEventsService } from 'src/app/services/google-events/google-event
 export class SignupCardComponent implements OnInit {
 
   hide = true;
-  constructor(private emailValidator: EmailValidatorService, private googleSignup: GoogleEventsService) { }
+  constructor(public emailValidator: EmailValidatorService, public googleSignup: GoogleEventsService) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 <mat-card class="signup-card-container">
   <form class="signup-form">
     <mat-form-field>
-      <input matInput placeholder="Email" [formControl]="emailValidator.emailFormControl" [errorStateMatcher]="matcher">
+      <input matInput placeholder="Email" [formControl]="emailValidator.emailFormControl" [errorStateMatcher]="emailValidator.matcher">
       <mat-hint></mat-hint>
       <mat-error *ngIf="emailValidator.emailFormControl.hasError('email') && !emailValidator.emailFormControl.hasError('required')">
         Please enter a valid email address
@@ -20,7 +20,7 @@
       <input matInput placeholder="Enter a password" [type]="hide ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
-    <button mat-stroked-button color="primary">Sign up</button>
+    <button mat-raised-button id="sign-up">Sign up</button>
   </form>
   <mat-divider class="divider"></mat-divider>
 

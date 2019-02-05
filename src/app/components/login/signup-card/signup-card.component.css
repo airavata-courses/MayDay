@@ -60,3 +60,9 @@ body {
 button ~ button {
   margin-left: 20px;
 }
+#sign-up{
+  background-color: #FF0266;
+}
+::ng-deep .tab-group-container{
+  width:24% !important;
+}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -22,7 +23,6 @@ import { SignupCardComponent } from './components/login/signup-card/signup-card.
 import { AccountOptionComponent } from './components/toolbar/account-option/account-option.component';
 import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar/toolbar.component';
-import { SearchComponent } from './components/search/search.component';
 import { SearchToolboxComponent } from './components/search/search-toolbox/search-toolbox.component';
 import { SearchAnalyticsComponent } from './components/search/search-analytics/search-analytics.component';
 import { SearchResultBoxComponent } from './components/search/search-result-box/search-result-box.component';
@@ -30,6 +30,7 @@ import { NearbyContainerComponent } from './components/search/search-analytics/n
 import { SearchHistoryContainerComponent } from './components/search/search-analytics/search-history-container/search-history-container.component';
 import { SearchTrendingContainerComponent } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
 import { MyMaterialModule } from './material.module';
+import { SearchCardLayoutComponent } from './components/search/search-result-box/search-card-layout/search-card-layout.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -54,13 +55,13 @@ export function getAuthServiceConfigs() {
     SignupCardComponent,
     NavbarComponent,
     AccountOptionComponent,
-    SearchComponent,
     SearchToolboxComponent,
     SearchAnalyticsComponent,
     SearchResultBoxComponent,
     NearbyContainerComponent,
     SearchHistoryContainerComponent,
-    SearchTrendingContainerComponent
+    SearchTrendingContainerComponent,
+    SearchCardLayoutComponent
 
   ],
   imports: [
@@ -79,7 +80,8 @@ export function getAuthServiceConfigs() {
     MatDividerModule,
     MatTabsModule,
     MyMaterialModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
   providers: [{
     provide: AuthServiceConfig,
