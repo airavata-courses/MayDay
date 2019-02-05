@@ -1,8 +1,11 @@
 package com.microservice.red.test;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,7 +13,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import org.json.simple.JSONObject;
+
 
 @Path("customers")
 public class personresource {
@@ -27,11 +35,12 @@ public class personresource {
 	}
 
 	@GET
-	@Path("customer/{id}")
+	@Path("customer/{email}")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-	public person getperson(@PathParam("id") int id)
+	public person getperson(@QueryParam("email") String email)
 	{
-		return repo.getperson(id);
+		System.out.println(repo.getperson(email));
+		return repo.getperson(email);
 	}
 	
 	@POST
@@ -44,13 +53,37 @@ public class personresource {
 		return a1;
 	}
 	
+	@POST
+	@Path("askLogin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response askLogin(person p) {
+	    person pdb;
+	    pdb = repo.getperson(p.getEmail());
+	    if (pdb.getEmail() == null) {
+	    	JSONObject obj = new JSONObject();
+	    	obj.put("login", "failed");
+	    	return Response.status(Status.OK).entity(obj.toJSONString()).build();
+	    }
+	    else if (p.getPassword().equals(pdb.getPassword())) {
+	    	JSONObject obj = new JSONObject();
+	    	obj.put("login", "success");
+	    	obj.put("last_login", pdb.getLast_login());
+	    	obj.put("image_url", pdb.getImage_url());
+	    	return Response.status(Status.OK).entity(obj.toJSONString()).build();
+	    }
+	    JSONObject obj = new JSONObject();
+    	obj.put("login", "failed");
+	    return Response.status(Status.OK).entity(obj.toJSONString()).build();
+	}
+	
 	@PUT
 	@Path("customer")
 	public person updateperson(person a1)
 	{
 		System.out.println(a1);
 		
-		if(repo.getperson(a1.getUser_id()).getUser_id()==0)
+		if(repo.getperson(a1.getEmail()).getEmail()== null)
 		{
 			repo.create(a1);
 		}
@@ -62,13 +95,13 @@ public class personresource {
 	}
 	
 	@DELETE
-	@Path("customer/{id}")
-	public person killperson(@PathParam("id") int id)
+	@Path("customer/{email}")
+	public person killperson(@QueryParam("email") String email)
 	{
-		person a=repo.getperson(id);
+		person a=repo.getperson(email);
 		
-		if(a.getUser_id()!=0)
-			repo.delete(id);
+		if(a.getEmail()!=null)
+			repo.delete(email);
 		
 		return a;
 	}

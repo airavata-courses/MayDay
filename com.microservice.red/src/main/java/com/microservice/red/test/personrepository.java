@@ -62,9 +62,9 @@ public class personrepository {
 		return persons;
 	}
 	
-	public person getperson(int id)
+	public person getperson(String email)
 	{
-		String sql="select * from person where user_id="+id;
+		String sql="select * from person where email='"+email+"'";
 		person a = new person();
 		try 
 		{
@@ -73,7 +73,7 @@ public class personrepository {
 			
 			if(rs.next())
 			{
-				System.out.println("result - "+rs.getString(4));
+				//System.out.println("result - "+rs.getString(4));
 				a.setUser_id(rs.getInt(1));
 				a.setEmail(rs.getString(2));
 				a.setName(rs.getString(3));
@@ -138,12 +138,12 @@ public class personrepository {
 			}
 	}
 
-	public void delete(int id) {
-		String sql = "delete from person where id=? ";
+	public void delete(String email) {
+		String sql = "delete from person where email=? ";
 		try 
 		{
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1,id);
+			st.setString(1,email);
 			st.executeUpdate();
 			
 		}
