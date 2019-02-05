@@ -3,6 +3,6 @@
   
   ></button>
   <div class="user-greet" (click)="logoutFromGoogle()" >
-    Hi {{cookieService.get('name')}} !
+    {{cookieService.get('name').split(' ')[0]}}
   </div>
 </div>
