@@ -15,7 +15,7 @@ export class LoginCardComponent implements OnInit {
 
   hide = true;
 
-  constructor(private emailValidator: EmailValidatorService, private googleSignin: GoogleEventsService) {
+  constructor(public emailValidator: EmailValidatorService, public googleSignin: GoogleEventsService) {
 
   }
 
