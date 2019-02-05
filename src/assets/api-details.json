@@ -1,0 +1,5 @@
+{
+    "purple": "http://localhost:3000",
+    "blue": "http://localhost:8000",
+    "red": "http://localhost:8080"
+}
