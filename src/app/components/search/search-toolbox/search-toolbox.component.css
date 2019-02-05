@@ -1,16 +1,10 @@
 .searchpanel{
     padding: 7em;
-    top: 20%;
-    opacity: 0.9;
-}
-.searchpanel:hover{
-    opacity: 1;
 }
 button{
     margin-left: 8em;
     background-color: #FF0266;
     color: white;
-    opacity: 0.8;
 
 }
 
