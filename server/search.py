@@ -11,6 +11,7 @@ class Search(object):
         with open('data.json') as json_file:  
             data = json.load(json_file)
             resp.set_header('response', '200 OK')
+            resp.set_header('Access-Control-Allow-Origin', '*')
             resp.body = json.dumps(OrderedDict(data), ensure_ascii=False,sort_keys=True, indent=4)
             resp.status = falcon.HTTP_200
 
