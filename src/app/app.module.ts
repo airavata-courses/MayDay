@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthServiceConfig, GoogleLoginProvider, SocialLoginModule } from 'angular-6-social-login';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,12 +29,14 @@ import {
 import {
   SearchTrendingContainerComponent,
 } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
+import {
+  SearchCardLayoutComponent,
+} from './components/search/search-result-box/search-card-layout/search-card-layout.component';
 import { SearchResultBoxComponent } from './components/search/search-result-box/search-result-box.component';
 import { SearchToolboxComponent } from './components/search/search-toolbox/search-toolbox.component';
 import { AccountOptionComponent } from './components/toolbar/account-option/account-option.component';
 import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { MyMaterialModule } from './material.module';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
 
 export function getAuthServiceConfigs() {
@@ -63,7 +66,8 @@ export function getAuthServiceConfigs() {
     SearchResultBoxComponent,
     NearbyContainerComponent,
     SearchHistoryContainerComponent,
-    SearchTrendingContainerComponent
+    SearchTrendingContainerComponent,
+    SearchCardLayoutComponent
 
   ],
   imports: [
