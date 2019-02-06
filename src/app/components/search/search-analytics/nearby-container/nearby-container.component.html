@@ -8,7 +8,7 @@
       </span>
       <mat-divider></mat-divider>
       <div class="list-doctors">
-      <app-search-card-layout></app-search-card-layout>
+      <app-search-card-layout class="cards" data={{doctors}} *ngFor="let d of doctors"></app-search-card-layout>
     </div>
   </div>
          

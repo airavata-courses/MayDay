@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-card-layout',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchCardLayoutComponent implements OnInit {
 
+  @Input() data: any;
   constructor() { }
 
   ngOnInit() {
+   // console.log(this.data);
+    this.populateData(this.data);
+  }
+
+  populateData(doctors){
+    console.log(JSON.parse(JSON.stringify(doctors.toString())));
   }
 
 }
