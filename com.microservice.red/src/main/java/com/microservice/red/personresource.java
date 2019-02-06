@@ -20,10 +20,19 @@ import javax.ws.rs.core.Response.Status;
 import org.json.simple.JSONObject;
 
 
+
 @Path("customers")
 public class personresource {
 
 	personrepository repo = new personrepository();
+	
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	@Path("/test")
+	public Response test()
+	{
+		return Response.status(Status.OK).entity("OK").build();
+	}
 	
 	@GET
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
