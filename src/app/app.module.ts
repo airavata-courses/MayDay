@@ -36,6 +36,7 @@ import { AccountOptionComponent } from './components/toolbar/account-option/acco
 import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { MyMaterialModule } from './material.module';
 import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
+import { AppStoreService } from './services/app-store/app-store.service';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -92,7 +93,8 @@ export function getAuthServiceConfigs() {
     useFactory: getAuthServiceConfigs
   },
   CookieService,
-  AuthRouterGuardService
+  AuthRouterGuardService,
+  AppStoreService
   ],
   bootstrap: [AppComponent]
 })

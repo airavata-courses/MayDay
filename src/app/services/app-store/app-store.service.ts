@@ -6,7 +6,7 @@ import { Observable, of, Subscriber } from 'rxjs';
 })
 export class AppStoreService {
 
-  dataStore: Observable<any>
+  dataStore: Observable<any>;
   dataEmitter: any;
   constructor() {
     this.cleanData();
@@ -18,10 +18,11 @@ export class AppStoreService {
   }
 
   getData(): Observable<any> {
-    return this.dataStore
+    return this.dataStore;
   }
 
   cleanData() {
     this.dataStore = Observable.create((e: any) => this.dataEmitter = e);
+    this.dataStore.subscribe();
   }
 }
