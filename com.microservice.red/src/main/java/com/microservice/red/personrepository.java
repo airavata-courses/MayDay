@@ -122,13 +122,22 @@ public class personrepository {
 	}
 	
 	public void update(person a1) {
-		String sql = "update person set name=? , email=? where id=? ";
+		String sql = "update person set name=?, password=?, address=?, zipcode=?, latitude=?, longitude=?, image_url=?, logged_in=?, user_id=? where email=? ";
 		try 
 		{
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setInt(1, a1.getUser_id());
-			st.setString(2, a1.getEmail());
-			st.setString(3, a1.getName());
+			
+			st.setInt(9, a1.getUser_id());
+			st.setString(10, a1.getEmail());
+			st.setString(1, a1.getName());
+			st.setString(2, a1.getPassword());
+			st.setString(3, a1.getAddress());
+			st.setInt(4, a1.getZipcode());
+			st.setFloat(5, a1.getLatitude());
+			st.setFloat(6, a1.getLongitude());
+			st.setString(7, a1.getImage_url());
+			st.setBoolean(8, a1.isLogged_in());
+			System.out.println(st);
 			st.executeUpdate();
 			
 		}
