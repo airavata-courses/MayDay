@@ -8,30 +8,13 @@
     </span>
     <mat-divider></mat-divider>
     <div class="search-history-panel">
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
+      <div class="card  card--z-1" *ngFor="let r of recent_search">{{r.search_string}} 
+        <!-- <a class="search-history-card">{{r.search_string}} </a> -->
       </div>
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
-      </div>
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
-      </div>
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
-      </div>
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
-      </div>
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
-      </div>
-      <div class="card  card--z-1">
-        <a class="search-history-card">Ortho surgon </a>
-      </div>
+     
     </div>
   </div>
   <span>
-      <label id="history-doctors-footer">View More ...</label>
+      <label id="history-doctors-footer" (click) = "getData()">View More ...</label>
     </span>
 </div>
