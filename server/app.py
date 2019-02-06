@@ -2,7 +2,11 @@ import falcon
 
 from search import Search
 from test import Test
-
+from falcon_cors import CORS
+cors = CORS(allow_origins_list=['http://localhost:3000'],
+            allow_all_headers=True,
+            allow_all_methods=True,
+			allow_all_origins=True)
 class App:
 
 	api = None
@@ -10,7 +14,7 @@ class App:
 	test = None
 
 	def __init__(self):
-		self.api  = falcon.API()
+		self.api  = falcon.API(middleware=[cors.middleware])
 		self.search = Search()
 		self.test = Test()
 		self.add_api_routes()
@@ -21,3 +25,5 @@ class App:
 	
 	def get_api(self):
 		return self.api
+
+

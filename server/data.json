@@ -8,7 +8,7 @@
                 "skip": "0", 
                 "user_location": "37.773,-122.413"
             }, 
-            "string_string": "obstetrics", 
+            "search_string": "obstetrics", 
             "timestamp": "", 
             "userid": "roja.raman@iu.edu"
         }, 
@@ -17,11 +17,12 @@
             "req_param": {
                 "limit": "10", 
                 "location": "37.773,-122.413,100", 
+                "name": "mark", 
                 "skip": "0", 
                 "user_location": "37.773,-122.413"
             }, 
-            "string_string": "GYN", 
-            "timestamp": "Mon Feb  4 17:33:04 2019", 
+            "search_string": "mark", 
+            "timestamp": "Wed Feb  6 05:06:50 2019", 
             "userid": "abc@gmail.com"
         }, 
         {
@@ -29,11 +30,12 @@
             "req_param": {
                 "limit": "10", 
                 "location": "37.773,-122.413,100", 
+                "name": "Jason", 
                 "skip": "0", 
                 "user_location": "37.773,-122.413"
             }, 
-            "string_string": "GYN", 
-            "timestamp": "Mon Feb  4 17:33:25 2019", 
+            "search_string": "Jason", 
+            "timestamp": "Wed Feb  6 05:08:24 2019", 
             "userid": "abc@gmail.com"
         }
     ]
