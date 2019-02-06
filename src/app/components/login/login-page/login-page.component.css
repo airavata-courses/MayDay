@@ -17,6 +17,10 @@
     text-align: center;
 }
 
+::ng-deep .tab-group-container .mat-tab-labels {
+    display: block !important;
+}
+
 .profile-icon {
     padding-right: 0.5rem;
 }
