@@ -7,7 +7,7 @@ import { ApiCallService } from 'src/app/services/api-call/api-call.service';
   styleUrls: ['./search-history-container.component.css']
 })
 export class SearchHistoryContainerComponent implements OnInit {
-  @Input() recent_search: any;
+  recent_search: any;
   constructor(public apiCall: ApiCallService) { }
 
   ngOnInit() {
@@ -15,11 +15,13 @@ export class SearchHistoryContainerComponent implements OnInit {
   }
 
   getData(){
-    this.apiCall.doGet('search_analytics', '/search/recent').subscribe((data) => {
-      console.log("get data - "+JSON.stringify(data));
-
-      this.recent_search = data["recent_result"];
-    });
+    setTimeout(() => {
+      this.apiCall.doGet('search_analytics', '/search/recent').subscribe((data) => {
+        console.log('get data - ', data);
+        this.recent_search = data['recent_result'];
+      });
+    }, 600);
+    
   }
 
 }

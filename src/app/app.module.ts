@@ -30,7 +30,7 @@ import { NearbyContainerComponent } from './components/search/search-analytics/n
 import { SearchHistoryContainerComponent } from './components/search/search-analytics/search-history-container/search-history-container.component';
 import { SearchTrendingContainerComponent } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
 import { MyMaterialModule } from './material.module';
-import { SearchCardLayoutComponent } from './components/search/search-result-box/search-card-layout/search-card-layout.component';
+import { SearchCardLayoutComponent } from './components/search/search-card-layout/doctor-card/search-card-layout.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(

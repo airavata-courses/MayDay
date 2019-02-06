@@ -11,12 +11,7 @@ export class SearchCardLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   // console.log(this.data);
-    this.populateData(this.data);
-  }
-
-  populateData(doctors){
-    console.log(JSON.parse(JSON.stringify(doctors.toString())));
+   console.log(this.data);
   }
 
 }

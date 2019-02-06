@@ -5,18 +5,18 @@
             <div class="e-card-header">
                 <!-- xLarge Circle Avatar-->
                 <div class="e-avatar e-avatar-circle e-avatar-xlarge">
-                    <img src="https://asset2.betterdoctor.com/assets/general_doctor_male.png" alt="profile_pic">
+                    <img [src]="data.profile.image_url" alt="profile_pic">
                 </div>
                 &nbsp;
             </div>
             <div class="e-card-header">
                 <div class="e-card-header-caption center">
-                    <div class="e-card-header-title name">Mark Masash Nishimura</div>
-                    <div class="e-card-sub-title">DDS</div>
+                    <div class="e-card-header-title name">{{data.profile.first_name + " " + data.profile.last_name }}</div>
+                    <div class="e-card-sub-title">{{data.specialties[0].actor +" ("+data.profile.title+")"}}</div>
                 </div>
             </div>
             <div class="e-card-content">
-                <p class="avatar-content"> Dr. Mark Nishimura, DDS is one of the country's most highly ranked doctors, specializing in dentistry and general dentistry. DDS Nishimura currently practices dentistry at San jose, California.Dr. Nishimura is licensed to treat patients in California...</p>
+                <p class="avatar-content">{{data.profile.bio}}</p>
             </div>
         </div>
     </div>

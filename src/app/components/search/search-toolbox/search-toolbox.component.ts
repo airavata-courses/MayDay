@@ -13,7 +13,7 @@ export class SearchToolboxComponent implements OnInit {
     drug_name : string,
     zip_code:string,
     practice:string
-  }
+  };
 
   constructor(public apiCall: ApiCallService,
     private dataStore: AppStoreService) {
@@ -24,8 +24,7 @@ export class SearchToolboxComponent implements OnInit {
   }
 
   getDoctors() {
-    console.log(this.searchObj)
-    var requestParam = {'name':this.searchObj,'location':'37.773,-122.413,100','user_location':'37.773,-122.413','skip':'0','limit':'10'};
+    const requestParam = {'name':this.searchObj,'location':'37.773,-122.413,100','user_location':'37.773,-122.413','skip':'0','limit':'10'};
     this.apiCall.setPostParams(requestParam);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));/* .subscribe((data) => {
       var resultset = data["data"];
@@ -39,7 +38,6 @@ export class SearchToolboxComponent implements OnInit {
     
     this.apiCall.setPostParams({'recent_result':[{'search_string':this.searchObj,'userid':'abc@gmail.com','req_param':requestParam,'endpoint':'/alldoctors'}]});
     this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {
-      console.log("post data - "+JSON.stringify(data));
     });
   }
 

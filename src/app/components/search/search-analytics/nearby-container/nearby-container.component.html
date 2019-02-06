@@ -1,16 +1,16 @@
 <div class="nearby-doctors" layout-xs="column">
-  <div class="row">
-      <span>
-          <label id="doctor-title1">Exceptional people...Exceptional care</label>
-      </span>
-      <span>
-          <label  id="doctor-title2">Find Doctors near you</label>
-      </span>
-      <mat-divider></mat-divider>
-      <div class="list-doctors">
-      <app-search-card-layout class="cards" data={{doctors}} *ngFor="let d of doctors"></app-search-card-layout>
+    <div class="row">
+        <span>
+            <label id="doctor-title1">Exceptional people...Exceptional care</label>
+        </span>
+        <span>
+            <label id="doctor-title2">Find Doctors near you</label>
+        </span>
+        <mat-divider></mat-divider>
+        <div class="list-doctors" *ngIf = "doctors.length != 0">
+            <app-search-card-layout  class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+        </div>
     </div>
-  </div>
-         
-      
+
+
 </div>
