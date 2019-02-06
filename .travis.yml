@@ -1,0 +1,14 @@
+language: java
+jdk:
+ - oraclejdk8
+branches:
+ only:
+ - develop-microservice-red
+ - "/develop-microservice-red-.+/"
+before_install:
+ - mvn clean
+install:
+ - mvn compile
+ - mvn install
+ 
+ 
