@@ -1,31 +1,3 @@
-/* .navbar-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-
-  .navbar-ul li {
-    float: left;
-  }
-
-  .navbar-ul li a{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    text-decoration: none;
-  }
-
-  .navbar-ul li a:hover:not(.active) {
-    background-color: #111;
-  }
-
-  .active {
-    background-color: #4CAF50;
-  } */
-
 header {
     background: rgb(0, 0, 0);
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14),  0 1px 5px 0 rgba(0,0,0,.12);
@@ -33,13 +5,37 @@ header {
     z-index: 100;
     width: 100%;
 }
-header .logo {
-   font-weight: bold;
-   text-transform: uppercase;
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.3em;
+    height: 2.5vh;
+  }
+.container a {
+    color: white;
 }
-header nav {
+
+.left-contents {
+    float:left;
+}
+
+.right-contents {
+    float: right;
+    width: 35rem;
+}
+
+app-account-option {
+    float: left;
+}
+
+nav {
+    float: right;
+}
+
+/*header nav {
     justify-self: right;
-}
+}*/
 header nav ul {
     list-style-type: none;
     margin: 0;
@@ -51,7 +47,7 @@ header nav ul li {
 header nav ul li a {
     padding: 1.5em;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.8rem;
 }
 header nav ul li a:hover {
     background: #272424e7;

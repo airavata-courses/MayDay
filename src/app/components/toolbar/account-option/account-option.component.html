@@ -1,3 +1,8 @@
-<p>
-  account-option works!
-</p>
+<div class="app-account-option-wrapper">
+  <button mat-mini-fab [style.background-image]="'url(' + cookieService.get('imageURL') + ')'" class="user-icon"
+  
+  ></button>
+  <div class="user-greet" (click)="logoutFromGoogle()" >
+    {{cookieService.get('name').split(' ')[0]}}
+  </div>
+</div>

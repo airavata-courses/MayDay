@@ -1,0 +1,17 @@
+.app-account-option-wrapper {
+    display: flex;
+}
+
+.user-greet {
+    color: #fff;
+    padding-top: 0.2rem;
+    font-size: 0.8rem;
+}
+
+.mat-mini-fab {
+    position: relative;
+    top: -0.35rem;
+    left: -0.8rem;
+    width: 32px !important;
+    height: 32px !important;
+}

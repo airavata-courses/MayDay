@@ -1,7 +1,7 @@
 .app-login-page-wrapper {
     width: 100vw;
     height: 100vh;
-    background-image: url('../../../../assets/images/homebg1.png');
+    background-image: url('../../../../assets/images/homebg1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -15,6 +15,10 @@
     top: 8rem;
     color: #000;
     text-align: center;
+}
+
+::ng-deep .tab-group-container .mat-tab-labels {
+    display: block !important;
 }
 
 .profile-icon {

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { GoogleEventsService } from 'src/app/services/google-events/google-events.service';
 
 @Component({
   selector: 'app-account-option',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountOptionComponent implements OnInit {
 
-  constructor() { }
+  constructor(public cookieService: CookieService,
+    private googleService: GoogleEventsService) { }
 
   ngOnInit() {
   }
 
+  logoutFromGoogle() {
+    this.googleService.socialSignout();
+  }
 }
