@@ -6,6 +6,7 @@ branches:
  - develop-microservice-red
  - "/develop-microservice-red-.+/"
 before_install:
+ - cd ./com.microservice.red
  - mvn clean
 install:
  - mvn compile
