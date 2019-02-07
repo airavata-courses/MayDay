@@ -40,8 +40,9 @@
 
   .list-doctors{
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: hidden;
+    padding-left: 4.5%;
     
   }
   .cards{

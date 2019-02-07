@@ -7,8 +7,10 @@
             <label id="doctor-title2">Find Doctors near you</label>
         </span>
         <mat-divider></mat-divider>
-        <div class="list-doctors" *ngIf = "doctors.length != 0">
-            <app-search-card-layout  class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+        <div class="nearby-dcotor-container">
+            <div class="list-doctors" *ngIf="doctors.length != 0">
+                <app-search-card-layout class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+            </div>
         </div>
     </div>
 
