@@ -27,6 +27,10 @@ export class SearchToolboxComponent implements OnInit {
     const requestParam = {'name':this.searchObj,'location':'37.773,-122.413,100','user_location':'37.773,-122.413','skip':'0','limit':'10'};
     this.apiCall.setPostParams(requestParam);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
+
+    this.apiCall.setPostParams({'recent_result':[{'search_string':this.searchObj,'userid':'abc@gmail.com','req_param':requestParam,'endpoint':'/alldoctors'}]});	
+    this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {	
+    });
   }
 
 }

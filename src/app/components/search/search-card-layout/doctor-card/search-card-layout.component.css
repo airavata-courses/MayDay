@@ -66,11 +66,36 @@
   }
   
   .e-custom-card.e-card .e-card-content {
-    overflow: visible;
+    /* overflow: visible; */
     width: auto;
-    margin: -5px 20px 0 20px;
+    margin: -5px 10px 0 10px;
     word-spacing: 1px;
   }
+  .e-card-content {
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  /* ::-webkit-scrollbar { 
+    display: none; 
+} */
+
+#style-3::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+	background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar-thumb
+{
+	background-color: #858585;
+}
+
   
   .avatar-content {
     color: rgba(250, 200, 130, 0.6);
@@ -79,7 +104,8 @@
     color: rgb(94, 94, 94);
     border: none;
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
+  
   }
   
   .avatar-content {
