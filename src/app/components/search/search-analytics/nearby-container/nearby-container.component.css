@@ -1,6 +1,6 @@
 .nearby-doctors{
     padding-top: 5em;
-    padding-left: 15em;
+    padding-left: 0em;
     display: block;
 }
 .row span #doctor-title1{
@@ -18,13 +18,13 @@
 }
 ::ng-deep .mat-divider{
     width:0%;
-    height: 1em;
+    height: 3em;
     animation-duration: 2s;
     animation-name: mymove;
     animation-fill-mode: forwards;
 }
 @keyframes mymove {
-    from {width: 0%;}
+    from {width: 30%;}
     to {width: 100%;}
   }
 
@@ -37,6 +37,13 @@
     width: 1px;
     height: 1px;
   }
+
   .list-doctors{
-      display: flex;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    
+  }
+  .cards{
+    margin-right: 20px;
   }

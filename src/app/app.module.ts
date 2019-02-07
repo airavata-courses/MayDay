@@ -29,15 +29,14 @@ import {
 import {
   SearchTrendingContainerComponent,
 } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
-import {
-  SearchCardLayoutComponent,
-} from './components/search/search-result-box/search-card-layout/search-card-layout.component';
+import { SearchCardLayoutComponent } from './components/search/search-card-layout/doctor-card/search-card-layout.component';
 import { SearchResultBoxComponent } from './components/search/search-result-box/search-result-box.component';
 import { SearchToolboxComponent } from './components/search/search-toolbox/search-toolbox.component';
 import { AccountOptionComponent } from './components/toolbar/account-option/account-option.component';
 import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { MyMaterialModule } from './material.module';
 import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
+import { AppStoreService } from './services/app-store/app-store.service';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -94,7 +93,8 @@ export function getAuthServiceConfigs() {
     useFactory: getAuthServiceConfigs
   },
   CookieService,
-  AuthRouterGuardService
+  AuthRouterGuardService,
+  AppStoreService
   ],
   bootstrap: [AppComponent]
 })

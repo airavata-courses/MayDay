@@ -9,15 +9,19 @@ export class ApiCallService {
 
   httpOptions: any;
   postParams: any;
-  apiEndPoints: any;
+  apiEndPoints = {
+    'doctors_and_drugs': 'http://localhost:3000',
+    'profile': 'http://localhost:8000',
+    'search_analytics': 'http://localhost:8080'
+  };
   constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin':'*'
       })
     };
     this._getWebServiceURL().subscribe((json: any) => {
-      console.log(json);
       this.apiEndPoints = {
         'doctors_and_drugs': json['purple'],
         'profile': json['red'],
@@ -34,9 +38,14 @@ export class ApiCallService {
     }
    }
 
+ 
+
    doPost(endpoint: string, uri: string): Observable<any> {
-     console.log(this.apiEndPoints);
     return this.http.post(this.apiEndPoints[endpoint]+uri, this.postParams);
+   }
+
+   doGet(endpoint: string, uri: string): Observable<any>{
+     return this.http.get(this.apiEndPoints[endpoint]+uri);
    }
 
    private _getWebServiceURL(): Observable<any> {

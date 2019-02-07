@@ -1,11 +1,20 @@
-<div class="nearby-doctors" layout-xs="column">
-    <div class="row">
-        <span>
-            <label id="doctor-title1">Expert medical advice. Informed medical decisions.</label>
-        </span>
-        <span>
-            <label  id="doctor-title2">You also viewed...</label>
-        </span>
-        <mat-divider></mat-divider>
+<div class="history-doctors" layout-xs="column">
+  <div class="nrow">
+    <span>
+      <label id="history-doctors-title1">Expert medical advice. Informed medical decisions.</label>
+    </span>
+    <span>
+      <label id="history-doctors-title2">You also viewed...</label>
+    </span>
+    <mat-divider></mat-divider>
+    <div class="search-history-panel">
+      <div class="card  card--z-1" *ngFor="let r of recent_search">{{r.search_string}} 
+        <!-- <a class="search-history-card">{{r.search_string}} </a> -->
+      </div>
+     
     </div>
   </div>
+  <span>
+      <label id="history-doctors-footer" (click) = "getData()">View More ...</label>
+    </span>
+</div>
