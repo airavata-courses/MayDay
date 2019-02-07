@@ -73,7 +73,7 @@
   }
   .e-card-content {
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
   /* ::-webkit-scrollbar { 
     display: none; 
