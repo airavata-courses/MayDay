@@ -1,7 +1,8 @@
-import { Request, Response, Application, response } from 'express';
-import { Search } from '../gateway/better-doctor';
-import * as _ from 'lodash';
 import * as cors from 'cors';
+import { Application, Request, Response } from 'express';
+import * as _ from 'lodash';
+
+import { Search } from '../gateway/gateway';
 
 export class Routes {
 
