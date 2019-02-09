@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppStoreService } from 'src/app/services/app-store/app-store.service';
 
 @Component({
   selector: 'app-search-result-box',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchResultBoxComponent implements OnInit {
 
-  constructor() { }
+  doctors = [];
+  drugs = [];
+  constructor(
+    public searchStore: AppStoreService
+  ) { }
 
   ngOnInit() {
+    this.searchStore.getData().subscribe((data) => {
+      this.doctors = data['data'];
+    });
   }
 
 }

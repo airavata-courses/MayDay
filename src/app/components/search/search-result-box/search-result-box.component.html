@@ -1,2 +1,10 @@
-<section>
-</section>
+<div class="result-box-doctors" layout-xs="column">
+    <div class="row">
+        <mat-divider></mat-divider>
+        <div class="result-dcotor-container">
+            <div class="list-doctors" *ngIf="doctors.length != 0">
+                <app-search-card-layout class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+            </div>
+        </div>
+    </div>
+</div>
