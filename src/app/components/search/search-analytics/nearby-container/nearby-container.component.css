@@ -1,51 +1,63 @@
-.nearby-doctors{
-    padding-top: 5em;
-    padding-left: 0em;
-    display: block;
+.nearby-doctors {
+  padding-top: 5em;
+  padding-left: 0em;
+  display: block;
 }
-.row span #doctor-title1{
-    display: flex;
-    justify-content: center;
-    font-size: 1.5em;
-    color: #858585;
-    padding-bottom: 1em;
+.row span #doctor-title1 {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  color: #858585;
+  padding-bottom: 1em;
 }
-.row span #doctor-title2{
-    display: flex;
-    justify-content: center;
-    font-size: 3em;
-    color: #858585
+.row span #doctor-title2 {
+  display: flex;
+  font-size: 3em;
+  color: #858585;
 }
-::ng-deep .mat-divider{
-    width:0%;
-    height: 3em;
-    animation-duration: 2s;
-    animation-name: mymove;
-    animation-fill-mode: forwards;
+.text-location-container {
+  display: flex;
+}
+.location {
+  margin-left: 66rem;
+  padding: 1rem;
+}
+
+.fancy-text {
+  padding-left: 2rem;
+}
+::ng-deep .mat-divider {
+  width: 0%;
+  height: 3em;
+  animation-duration: 2s;
+  animation-name: mymove;
+  animation-fill-mode: forwards;
 }
 @keyframes mymove {
-    from {width: 30%;}
-    to {width: 100%;}
+  from {
+    width: 30%;
   }
+  to {
+    width: 100%;
+  }
+}
 
-  ::-webkit-scrollbar {
-    width: 1px;
-    height: 1px;
-  }
-  
-  ::-webkit-scrollbar-button {
-    width: 1px;
-    height: 1px;
-  }
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
 
-  .list-doctors{
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    justify-content: center;
-    /* padding-left: 4.5%; */
-    
-  }
-  .cards{
-    margin-right: 20px;
-  }
+::-webkit-scrollbar-button {
+  width: 1px;
+  height: 1px;
+}
+
+.list-doctors {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-left: 4.5%;
+}
+.cards {
+  margin-right: 20px;
+}
