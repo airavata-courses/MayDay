@@ -1,5 +1,5 @@
 import { Request, Response, Application, response } from 'express';
-import { Search } from '../gateway/better-doctor';
+import { Search } from '../gateway/gateway';
 import * as _ from 'lodash';
 import * as cors from 'cors';
 
