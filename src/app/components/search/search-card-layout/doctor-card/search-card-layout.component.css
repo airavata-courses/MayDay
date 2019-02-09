@@ -9,13 +9,14 @@
   
   .e-custom-card {
     position: relative;
-    margin-top: 80px;
+    margin-top: 5rem;
     overflow: visible;
     border-radius: 15px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: 0.2s;
     border-width: 1px;
     padding: 1px;
+    min-width: 18.75rem;
   }
   
   .e-custom-card.e-card:hover {

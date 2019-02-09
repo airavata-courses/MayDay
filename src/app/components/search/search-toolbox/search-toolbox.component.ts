@@ -14,7 +14,7 @@ export class SearchToolboxComponent implements OnInit {
     location : '',
     user_location: '',
     skip: 0,
-    limit: 10,
+    limit: 5,
   };
 
   constructor(public apiCall: ApiCallService,
@@ -31,7 +31,7 @@ export class SearchToolboxComponent implements OnInit {
     this.doctorSearchParams['user_location'] = '37.773,-122.413';
     this.apiCall.setPostParams(this.doctorSearchParams);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
-
+    this.dataStore.setSearchParameters(this.doctorSearchParams);
     /* this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams,'userid':this.cookieService.get('email'),'req_param':requestParam,'endpoint':'/alldoctors'}]});	
     this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {	
     }); */

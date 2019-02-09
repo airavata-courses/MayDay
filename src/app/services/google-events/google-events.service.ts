@@ -28,7 +28,6 @@ export class GoogleEventsService {
     this.socialAuthService.signOut().then((data: any) => {
       this.cookieService.deleteAll();
       this.router.navigateByUrl('/').then(() => {
-        console.log(this.cookieService.check('email'));
       }).catch((err) => {
         console.log(err);
       });
