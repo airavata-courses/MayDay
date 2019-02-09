@@ -32,7 +32,7 @@ export class NearbyContainerComponent implements OnInit {
       this.apiCallService.doGet('geocode', '&location=' + position.join(',') + '&includeNearestIntersection=true').subscribe((data) => {
         this.browserLocationString = data['results'][0]['locations'][0];
         console.log(this.browserLocationString);
-      })
+      });
       
     });
 
