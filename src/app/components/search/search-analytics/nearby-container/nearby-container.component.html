@@ -1,11 +1,26 @@
 <div class="nearby-doctors" layout-xs="column">
     <div class="row">
-        <span>
-            <label id="doctor-title1">Exceptional people...Exceptional care</label>
-        </span>
-        <span>
-            <label id="doctor-title2">Find Doctors near you</label>
-        </span>
+        <div class="text-location-container">
+            <div class="fancy-text">
+                <span>
+                    <label id="doctor-title1">Exceptional people...Exceptional care</label>
+                </span>
+                <span>
+                    <label id="doctor-title2">Doctors near you</label>
+                </span>
+            </div>
+            <div class="location" *ngIf="browserLocationString">
+                <div>
+                    <label> {{browserLocationString.adminArea4 + " " + browserLocationString.adminArea4Type}}</label>
+                </div>
+                <div>
+                    <label> {{browserLocationString.adminArea5+" , "+browserLocationString.adminArea3}}</label>
+                </div>
+                <div>
+                        <label> {{browserLocationString.adminArea1}}</label>
+                </div>
+            </div>
+        </div>
         <mat-divider></mat-divider>
         <div class="nearby-dcotor-container">
             <div class="list-doctors" *ngIf="doctors.length != 0">
