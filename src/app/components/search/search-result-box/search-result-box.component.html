@@ -1,2 +1,22 @@
-<section>
-</section>
+<div class="result-box-doctors" layout-xs="column">
+    <div class="row">
+        <div class="result-dcotor-container">
+            <div class="list-doctors" *ngIf="doctors.length != 0">
+                <app-search-card-layout class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+            </div>
+        </div>
+    </div>
+    <div class="pagination-container" *ngIf="metaData.total > metaData.limit">
+        <div class="pagination">
+            <a (click)="pageClick(currentPageNumber-1)">&laquo;</a>
+            <a *ngFor="let page of pages" (click)="pageClick(page)"
+                [ngClass]="{'active-link': (page == currentPageNumber)}">{{page}}</a>
+            <a (click)=pageClick(currentPageNumber+1)>&raquo;</a>
+        </div>
+        <div class="skip-pages">
+            <input type="text" placeholder="skip to.." [(ngModel)]="currentPageNumber">
+            <button mat-raised-button color="accent" (click)="pageClick(currentPageNumber)">Go</button>
+            <span class="page-detail">{{pageCount + " pages"}}</span>
+        </div>
+    </div>
+</div>

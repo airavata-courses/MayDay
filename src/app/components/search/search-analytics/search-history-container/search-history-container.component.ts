@@ -17,7 +17,6 @@ export class SearchHistoryContainerComponent implements OnInit {
   getData(){
     setTimeout(() => {
       this.apiCall.doGet('search_analytics', '/search/recent').subscribe((data) => {
-        console.log('get data - ', data);
         this.recent_search = data['recent_result'];
       });
     }, 600);

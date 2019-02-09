@@ -1,0 +1,101 @@
+.result-box-doctors {
+  padding-left: 0em;
+  display: block;
+}
+.row span #doctor-title1 {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  color: #858585;
+  padding-bottom: 1em;
+}
+.row span #doctor-title2 {
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+  color: #858585;
+}
+::ng-deep .mat-divider {
+  width: 0%;
+  height: 3em;
+  animation-duration: 2s;
+  animation-name: mymove;
+  animation-fill-mode: forwards;
+}
+@keyframes mymove {
+  from {
+    width: 30%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-button {
+  width: 1px;
+  height: 1px;
+}
+
+.list-doctors {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-left: 4.5%;
+}
+.cards {
+  margin-right: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  padding-left: 30%;
+  padding-bottom: 1rem;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: grey;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.pagination a.active-link {
+  background-color: #ff0266;
+  color: white;
+  border: 1px solid #ff0266;
+}
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.skip-pages {
+  display: flex;
+}
+
+.skip-pages input {
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  margin: 0 4px;
+  width: 0.5rem;
+  width: 4rem;
+  text-align: center;
+  color: grey;
+}
+
+.page-detail {
+  padding: 0.4rem;
+  color: #aaa;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiCallService } from 'src/app/services/api-call/api-call.service';
 import { AppStoreService } from 'src/app/services/app-store/app-store.service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-search-toolbox',
   templateUrl: './search-toolbox.component.html',
@@ -8,15 +9,17 @@ import { AppStoreService } from 'src/app/services/app-store/app-store.service';
 })
 export class SearchToolboxComponent implements OnInit {
   
-  searchObj : {
-    doctor_name : string,
-    drug_name : string,
-    zip_code:string,
-    practice:string
+  doctorSearchParams: any = {
+    name : '',
+    location : '',
+    user_location: '',
+    skip: 0,
+    limit: 5,
   };
 
   constructor(public apiCall: ApiCallService,
-    private dataStore: AppStoreService) {
+    private dataStore: AppStoreService,
+    private cookieService: CookieService) {
    }
 
   ngOnInit() {
@@ -24,13 +27,14 @@ export class SearchToolboxComponent implements OnInit {
   }
 
   getDoctors() {
-    const requestParam = {'name':this.searchObj,'location':'37.773,-122.413,100','user_location':'37.773,-122.413','skip':'0','limit':'10'};
-    this.apiCall.setPostParams(requestParam);
+    this.doctorSearchParams['location'] = '37.773,-122.413,100';
+    this.doctorSearchParams['user_location'] = '37.773,-122.413';
+    this.apiCall.setPostParams(this.doctorSearchParams);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
-
-    this.apiCall.setPostParams({'recent_result':[{'search_string':this.searchObj,'userid':'abc@gmail.com','req_param':requestParam,'endpoint':'/alldoctors'}]});	
+    this.dataStore.setSearchParameters(this.doctorSearchParams);
+    /* this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams,'userid':this.cookieService.get('email'),'req_param':requestParam,'endpoint':'/alldoctors'}]});	
     this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {	
-    });
+    }); */
   }
 
 }

@@ -12,7 +12,7 @@
             <div class="e-card-header">
                 <div class="e-card-header-caption center">
                     <div class="e-card-header-title name">{{data.profile.first_name + " " + data.profile.last_name }}</div>
-                    <div class="e-card-sub-title">{{data.specialties[0].actor +" ("+data.profile.title+")"}}</div>
+                    <div class="e-card-sub-title">{{data.specialties.length > 0 ? (data.specialties[0].actor + " (" +data.profile.title + ")") : "No Specialities"}}</div>
                 </div>
             </div>
             <div class="e-card-content">
