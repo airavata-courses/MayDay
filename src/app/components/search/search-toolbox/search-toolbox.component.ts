@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./search-toolbox.component.css']
 })
 export class SearchToolboxComponent implements OnInit {
-  
+
   doctorSearchParams: any = {
     name : '',
     location : '',
@@ -32,9 +32,11 @@ export class SearchToolboxComponent implements OnInit {
     this.apiCall.setPostParams(this.doctorSearchParams);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
     this.dataStore.setSearchParameters(this.doctorSearchParams);
-    /* this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams,'userid':this.cookieService.get('email'),'req_param':requestParam,'endpoint':'/alldoctors'}]});	
+    this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams.name,'userid':this.cookieService.get('email'),'req_param':this.doctorSearchParams,'endpoint':'/alldoctors'}]});	
     this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {	
-    }); */
+    }); 
+
   }
+
 
 }

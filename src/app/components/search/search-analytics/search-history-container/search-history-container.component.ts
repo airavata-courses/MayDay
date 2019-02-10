@@ -11,7 +11,7 @@ export class SearchHistoryContainerComponent implements OnInit {
   constructor(public apiCall: ApiCallService) { }
 
   ngOnInit() {
-   
+    this.getData();
   }
 
   getData(){

@@ -8,16 +8,11 @@
                 <span>
                     <label id="doctor-title2">Doctors near you</label>
                 </span>
-            </div>
-            <div class="location" *ngIf="browserLocationString">
-                <div>
-                    <label> {{browserLocationString.adminArea4 + " " + browserLocationString.adminArea4Type}}</label>
-                </div>
-                <div>
-                    <label> {{browserLocationString.adminArea5+" , "+browserLocationString.adminArea3}}</label>
-                </div>
-                <div>
-                        <label> {{browserLocationString.adminArea1}}</label>
+                <div class="location" *ngIf="browserLocationString">
+                        <i class="material-icons"> room </i>
+                        <label id="doctor-location"> {{browserLocationString.adminArea4 + " " +
+                            browserLocationString.adminArea4Type}} - {{browserLocationString.adminArea5+" ,
+                            "+browserLocationString.adminArea3}} , {{browserLocationString.adminArea1}} </label>
                 </div>
             </div>
         </div>

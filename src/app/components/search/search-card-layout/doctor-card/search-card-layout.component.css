@@ -1,5 +1,5 @@
 .sample_container {
-    max-width: 300px;
+    max-width: 270px;
     margin: auto;
     min-height: 400px;
     
@@ -16,7 +16,7 @@
     transition: 0.2s;
     border-width: 1px;
     padding: 1px;
-    min-width: 18.75rem;
+    min-width: 17rem;
   }
   
   .e-custom-card.e-card:hover {
