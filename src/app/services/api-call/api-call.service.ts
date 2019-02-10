@@ -41,7 +41,6 @@ export class ApiCallService {
   }
 
 
-
   doPost(endpoint: string, uri: string): Observable<any> {
     return this.http.post(this.apiEndPoints[endpoint] + uri, this.postParams);
   }
