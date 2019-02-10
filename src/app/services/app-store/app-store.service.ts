@@ -8,6 +8,8 @@ export class AppStoreService {
 
   dataStore: Observable<any>;
   dataEmitter: any;
+  searchParams: Observable<any>;
+  paramEmitter: any;
   constructor() {
     this.cleanData();
   }
@@ -21,8 +23,18 @@ export class AppStoreService {
     return this.dataStore;
   }
 
+  setSearchParameters(searchParams: any) {
+    this.searchParams = searchParams;
+    this.paramEmitter.next(searchParams);
+  }
+  getSearchParams(): Observable<any> {
+    return this.searchParams;
+  }
+
   cleanData() {
     this.dataStore = Observable.create((e: any) => this.dataEmitter = e);
+    this.searchParams = Observable.create((e: any) => this.paramEmitter = e);
     this.dataStore.subscribe();
+    this.searchParams.subscribe();
   }
 }

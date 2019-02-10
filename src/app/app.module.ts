@@ -8,6 +8,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,13 +31,14 @@ import {
   SearchTrendingContainerComponent,
 } from './components/search/search-analytics/search-trending-container/search-trending-container.component';
 import { SearchCardLayoutComponent } from './components/search/search-card-layout/doctor-card/search-card-layout.component';
+import { SearchPageComponent } from './components/search/search-page/search-page.component';
 import { SearchResultBoxComponent } from './components/search/search-result-box/search-result-box.component';
 import { SearchToolboxComponent } from './components/search/search-toolbox/search-toolbox.component';
 import { AccountOptionComponent } from './components/toolbar/account-option/account-option.component';
 import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { MyMaterialModule } from './material.module';
-import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
 import { AppStoreService } from './services/app-store/app-store.service';
+import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -66,7 +68,8 @@ export function getAuthServiceConfigs() {
     NearbyContainerComponent,
     SearchHistoryContainerComponent,
     SearchTrendingContainerComponent,
-    SearchCardLayoutComponent
+    SearchCardLayoutComponent,
+    SearchPageComponent
 
   ],
   imports: [
@@ -86,7 +89,8 @@ export function getAuthServiceConfigs() {
     MatTabsModule,
     MyMaterialModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [{
     provide: AuthServiceConfig,

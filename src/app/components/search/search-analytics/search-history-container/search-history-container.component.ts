@@ -11,13 +11,12 @@ export class SearchHistoryContainerComponent implements OnInit {
   constructor(public apiCall: ApiCallService) { }
 
   ngOnInit() {
-   
+    this.getData();
   }
 
   getData(){
     setTimeout(() => {
       this.apiCall.doGet('search_analytics', '/search/recent').subscribe((data) => {
-        console.log('get data - ', data);
         this.recent_search = data['recent_result'];
       });
     }, 600);

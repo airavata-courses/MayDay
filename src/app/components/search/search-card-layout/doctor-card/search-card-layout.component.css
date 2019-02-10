@@ -1,5 +1,5 @@
 .sample_container {
-    max-width: 300px;
+    max-width: 270px;
     margin: auto;
     min-height: 400px;
     
@@ -9,13 +9,14 @@
   
   .e-custom-card {
     position: relative;
-    margin-top: 80px;
+    margin-top: 5rem;
     overflow: visible;
     border-radius: 15px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     transition: 0.2s;
     border-width: 1px;
     padding: 1px;
+    min-width: 17rem;
   }
   
   .e-custom-card.e-card:hover {
@@ -73,7 +74,7 @@
   }
   .e-card-content {
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
   /* ::-webkit-scrollbar { 
     display: none; 
@@ -110,6 +111,8 @@
   
   .avatar-content {
     margin-bottom: 0;
+    max-height: 100%;
+    overflow: hidden;
   }
   
   .sample_container .name {
@@ -126,4 +129,10 @@
   
   .highcontrast .e-custom-card.e-card .e-card-header .e-card-header-caption .e-card-header-title {
     color: rgba(255, 255, 255, 0.84);
+  }
+
+  .doc-bio button {
+    background-color: #F06292;
+    width: 100%;
+    color : #fff;
   }

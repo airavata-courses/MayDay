@@ -6,12 +6,32 @@
     color: #fff;
     padding-top: 0.2rem;
     font-size: 0.8rem;
+    cursor: pointer;
 }
 
 .mat-mini-fab {
     position: relative;
     top: -0.35rem;
     left: -0.8rem;
+    margin-left: 1em;
     width: 32px !important;
     height: 32px !important;
+}
+
+::ng-deep .mat-menu-content {
+    padding: 0 !important;
+}
+
+::ng-deep .mat-menu-panel {
+    position: relative;
+    left: -3.4rem;
+    top: -0.25rem;
+    background: #000;
+}
+
+::ng-deep .mat-menu-content button {
+    color: #fff;
+    padding-left: 1.6875rem;
+    font-family: inherit;
+    font-size: 0.8rem;
 }

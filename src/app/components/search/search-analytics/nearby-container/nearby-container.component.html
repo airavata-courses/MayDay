@@ -1,16 +1,27 @@
 <div class="nearby-doctors" layout-xs="column">
     <div class="row">
-        <span>
-            <label id="doctor-title1">Exceptional people...Exceptional care</label>
-        </span>
-        <span>
-            <label id="doctor-title2">Find Doctors near you</label>
-        </span>
+        <div class="text-location-container">
+            <div class="fancy-text">
+                <span>
+                    <label id="doctor-title1">Exceptional people...Exceptional care</label>
+                </span>
+                <span>
+                    <label id="doctor-title2">Doctors near you</label>
+                </span>
+                <div class="location" *ngIf="browserLocationString">
+                        <i class="material-icons"> room </i>
+                        <label id="doctor-location"> {{browserLocationString.adminArea4 + " " +
+                            browserLocationString.adminArea4Type}} - {{browserLocationString.adminArea5+" ,
+                            "+browserLocationString.adminArea3}} , {{browserLocationString.adminArea1}} </label>
+                </div>
+            </div>
+
+        </div>
         <mat-divider></mat-divider>
-        <div class="list-doctors" *ngIf = "doctors.length != 0">
-            <app-search-card-layout  class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+        <div class="nearby-dcotor-container">
+            <div class="list-doctors" *ngIf="doctors.length != 0">
+                <app-search-card-layout class="cards" [data]="d" *ngFor="let d of doctors"></app-search-card-layout>
+            </div>
         </div>
     </div>
-
-
 </div>
