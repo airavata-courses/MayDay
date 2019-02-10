@@ -48,7 +48,7 @@ export class ApiCallService {
 
   doGet(endpoint: string, uri: string): Observable<any> {
     console.log(endpoint);
-    if (endpoint != 'search_analytics') {
+    if (endpoint !== 'search_analytics') {
       return this.http.get(this.apiEndPoints[endpoint] + uri + '&key=EvAFDNlMGI6PeGpkR33PAUfF61AvIliz');
     } else {
       return this.http.get(this.apiEndPoints[endpoint] + uri);
