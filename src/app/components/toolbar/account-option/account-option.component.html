@@ -1,8 +1,10 @@
 <div class="app-account-option-wrapper">
-  <button mat-mini-fab [style.background-image]="'url(' + cookieService.get('imageURL') + ')'" class="user-icon"
-  
-  ></button>
-  <div class="user-greet" (click)="logoutFromGoogle()" >
+  <button mat-mini-fab [style.background-image]="'url(' + cookieService.get('imageURL') + ')'" class="user-icon"></button>
+  <div class="user-greet" [matMenuTriggerFor]="menu">
     {{cookieService.get('name').split(' ')[0]}}
   </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logoutFromGoogle()">LOGOUT</button>
+    <!--<button mat-menu-item>Item 2</button>-->
+  </mat-menu>
 </div>
