@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host=0.0.0.0",
+    "start:cloud": "ng serve --host=0.0.0.0 -c cloud",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
