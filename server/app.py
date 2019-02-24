@@ -3,7 +3,7 @@ import falcon
 from search import Search
 from test import Test
 from falcon_cors import CORS
-cors = CORS(allow_origins_list=['http://localhost:3000'],
+cors = CORS(allow_origins_list=['http://localhost:3000', 'http://js-168-167.jetstream-cloud.org:4200'],
             allow_all_headers=True,
             allow_all_methods=True,
 			allow_all_origins=True)
