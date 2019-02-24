@@ -11,7 +11,7 @@ export class ApiCallService {
   postParams: any;
   apiEndPoints = {
     'doctors_and_drugs': 'http://localhost:3000',
-    'profile': 'http://localhost:8000',
+    'profile': 'http://localhost:8080/rest/customers',
     'search_analytics': 'http://localhost:7000',
     'geocode': 'https://www.mapquestapi.com/geocoding/v1/reverse?'
   };
@@ -46,7 +46,6 @@ export class ApiCallService {
   }
 
   doGet(endpoint: string, uri: string): Observable<any> {
-    console.log(endpoint);
     if (endpoint !== 'search_analytics') {
       return this.http.get(this.apiEndPoints[endpoint] + uri + '&key=EvAFDNlMGI6PeGpkR33PAUfF61AvIliz');
     } else {

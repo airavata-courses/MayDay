@@ -1,7 +1,7 @@
 <mat-card class="login-card-container">
   <form class="login-form">
     <mat-form-field>
-      <input matInput placeholder="Email" [formControl]="emailValidator.emailFormControl" [errorStateMatcher]="emailValidator.matcher">
+      <input [(ngModel)]="userLoginDetails.email" name="email" matInput placeholder="Email" [formControl]="emailValidator.emailFormControl" [errorStateMatcher]="emailValidator.matcher">
       <mat-hint></mat-hint>
       <mat-error *ngIf="emailValidator.emailFormControl.hasError('email') && !emailValidator.emailFormControl.hasError('required')">
         Please enter a valid email address
@@ -11,10 +11,10 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <input [(ngModel)]="userLoginDetails.password" name="password" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </mat-form-field>
-    <button mat-raised-button id="sign-in">Sign in</button>
+    <button mat-raised-button id="sign-in" (click)="login()">Sign in</button>
   </form>
   <mat-divider class="divider"></mat-divider>
 
