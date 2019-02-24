@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  endpoints: {
+    'purple': 'http://localhost:3000',
+    'blue': 'http://localhost:7000',
+    'red': 'http://localhost:8080/rest/customers',
+    'geocode': 'https://www.mapquestapi.com/geocoding/v1/reverse?key=EvAFDNlMGI6PeGpkR33PAUfF61AvIliz'
+  }
 };
 
 /*

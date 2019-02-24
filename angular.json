@@ -51,6 +51,15 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "cloud": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.cloud.ts"
+                }
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -62,6 +71,9 @@
           "configurations": {
             "production": {
               "browserTarget": "rhino:build:production"
+            },
+            "cloud": {
+              "browserTarget": "rhino:build:cloud"
             }
           }
         },

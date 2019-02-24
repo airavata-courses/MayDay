@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +11,7 @@ export class ApiCallService {
 
   httpOptions: any;
   postParams: any;
-  apiEndPoints = {
-    'doctors_and_drugs': 'http://localhost:3000',
-    'profile': 'http://localhost:8080/rest/customers',
-    'search_analytics': 'http://localhost:7000',
-    'geocode': 'https://www.mapquestapi.com/geocoding/v1/reverse?'
-  };
+  apiEndPoints: any;
   constructor(private http: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
@@ -22,14 +19,12 @@ export class ApiCallService {
         'Access-Control-Allow-Origin': '*'
       })
     };
-    /*this._getWebServiceURL().subscribe((json: any) => {
       this.apiEndPoints = {
-        'doctors_and_drugs': json['purple'],
-        'profile': json['red'],
-        'search_analytics': json['blue'],
-        'geocode': ''
+        'doctors_and_drugs': environment.endpoints['purple'],
+        'profile': environment.endpoints['red'],
+        'search_analytics': environment.endpoints['blue'],
+        'geocode': environment.endpoints['geocode']
       };
-    });*/
   }
 
   setPostParams(postParams: any) {
@@ -47,14 +42,10 @@ export class ApiCallService {
 
   doGet(endpoint: string, uri: string): Observable<any> {
     if (endpoint !== 'search_analytics') {
-      return this.http.get(this.apiEndPoints[endpoint] + uri + '&key=EvAFDNlMGI6PeGpkR33PAUfF61AvIliz');
+      return this.http.get(this.apiEndPoints[endpoint] + uri);
     } else {
       return this.http.get(this.apiEndPoints[endpoint] + uri);
     }
-  }
-
-  private _getWebServiceURL(): Observable<any> {
-    return this.http.get('assets/api-details.json');
   }
 
 }
