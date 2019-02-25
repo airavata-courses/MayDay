@@ -14,42 +14,21 @@ export class NearbyContainerComponent implements OnInit {
   locationEmitter: any;
   locationObserver: Observable<any>;
   geoCoder: any;
-  constructor(private apiCallService: ApiCallService) {
-    this.locationObserver = Observable.create((e: any) => this.locationEmitter = e);
-  }
+  constructor(private apiCallService: ApiCallService) {}
 
   ngOnInit() {
-    this.getBrowserLocation();
-    this.locationObserver.subscribe((position: number[]) => {
-      if(position.length === 0) {
-        return;
-      }
-      const requestParam = { 'location': position.join(',')+',100', 'user_location': position.join(','), 'skip': '0', 'limit': '5' };
+    this.apiCallService.doGet('ipinfo', '').subscribe((ipinfo)=>{
+      const position = ipinfo['loc'];
+      const requestParam = { 'location': position+',100', 'user_location': position, 'skip': '0', 'limit': '5' };
       this.apiCallService.setPostParams(requestParam);
       this.apiCallService.doPost('doctors_and_drugs', '/alldoctors').subscribe((data) => {
         this.doctors = data['data'];
       });
-      this.apiCallService.doGet('geocode', '&location=' + position.join(',') + '&includeNearestIntersection=true').subscribe((data) => {
+      this.apiCallService.doGet('geocode', '&location=' + position + '&includeNearestIntersection=true').subscribe((data) => {
         this.browserLocationString = data['results'][0]['locations'][0];
         console.log(this.browserLocationString);
       });
-      
     });
-
   }
 
-  getBrowserLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position);
-        this.locationEmitter.next([position.coords.latitude, position.coords.longitude]);
-      }, (error) => {
-        console.log(error);
-        this.locationEmitter.next([40.7128, -74.0060]);
-        this.browserLocationString = 'Allow Location Access';
-       });
-    } else {
-      console.log('navigator is not defined on this browser');
-    }
-  }
 }

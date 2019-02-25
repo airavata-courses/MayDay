@@ -23,7 +23,9 @@ export class ApiCallService {
         'doctors_and_drugs': environment.endpoints['purple'],
         'profile': environment.endpoints['red'],
         'search_analytics': environment.endpoints['blue'],
-        'geocode': environment.endpoints['geocode']
+        'geocode': environment.endpoints['geocode'],
+        'ipinfo': environment.endpoints['ipinfo']
+        
       };
   }
 
@@ -41,11 +43,7 @@ export class ApiCallService {
   }
 
   doGet(endpoint: string, uri: string): Observable<any> {
-    if (endpoint !== 'search_analytics') {
-      return this.http.get(this.apiEndPoints[endpoint] + uri);
-    } else {
-      return this.http.get(this.apiEndPoints[endpoint] + uri);
-    }
+    return this.http.get(this.apiEndPoints[endpoint] + uri);
   }
 
 }

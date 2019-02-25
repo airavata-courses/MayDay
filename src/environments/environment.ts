@@ -8,6 +8,7 @@ export const environment = {
     'purple': 'http://localhost:3000',
     'blue': 'http://localhost:7000',
     'red': 'http://localhost:8080/rest/customers',
+    'ipinfo': 'https://ipinfo.io/?token=3f660cf19bbe14',
     'geocode': 'https://www.mapquestapi.com/geocoding/v1/reverse?key=EvAFDNlMGI6PeGpkR33PAUfF61AvIliz'
   }
 };

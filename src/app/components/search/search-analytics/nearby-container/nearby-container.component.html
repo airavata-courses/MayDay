@@ -10,7 +10,7 @@
                 </span>
                 <div class="location" *ngIf="browserLocationString">
                         <i class="material-icons"> room </i>
-                        <label id="doctor-location"> {{browserLocationString.adminArea4 + " " +
+                        <label id="doctor-location"> {{browserLocationString.street? browserLocationString.street : ''}}, {{browserLocationString.adminArea4 + " " +
                             browserLocationString.adminArea4Type}} - {{browserLocationString.adminArea5+" ,
                             "+browserLocationString.adminArea3}} , {{browserLocationString.adminArea1}} </label>
                 </div>
