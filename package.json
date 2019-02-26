@@ -30,6 +30,7 @@
     "angular-6-social-login": "^1.1.1",
     "core-js": "^2.5.4",
     "install": "^0.12.2",
+    "md5": "^2.2.1",
     "ngx-cookie-service": "^2.1.0",
     "rxjs": "^6.4.0",
     "support": "^1.1.4",

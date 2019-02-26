@@ -38,12 +38,16 @@ export class ApiCallService {
   }
 
 
-  doPost(endpoint: string, uri: string): Observable<any> {
+  doPost(endpoint: string, uri: string=''): Observable<any> {
     return this.http.post(this.apiEndPoints[endpoint] + uri, this.postParams);
   }
 
-  doGet(endpoint: string, uri: string): Observable<any> {
+  doGet(endpoint: string, uri: string=''): Observable<any> {
     return this.http.get(this.apiEndPoints[endpoint] + uri);
+  }
+
+  doPut(endpoint: string, uri: string=''): Observable<any> {
+    return this.http.put(this.apiEndPoints[endpoint] + uri, this.postParams);
   }
 
 }

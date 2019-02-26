@@ -60,6 +60,11 @@ body {
 button ~ button {
   margin-left: 20px;
 }
+
+.file-input {
+  display: none;
+}
+
 #sign-up{
   background-color: #FF0266;
 }

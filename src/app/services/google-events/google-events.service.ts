@@ -16,6 +16,7 @@ export class GoogleEventsService {
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData: SocialUser) => {
+        this.cookieService.set('google_auth', 'true');
         this.cookieService.set('userId', userData['id']);
         this.cookieService.set('email', userData['email']);
         this.cookieService.set('imageURL', userData['image']);
@@ -31,6 +32,8 @@ export class GoogleEventsService {
       }).catch((err) => {
         console.log(err);
       });
+    }).catch((err)=>{
+      console.log(err);
     });
     
   }

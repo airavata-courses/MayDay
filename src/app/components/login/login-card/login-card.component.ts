@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import * as md5 from 'md5';
+import { CookieService } from 'ngx-cookie-service';
+import { ApiCallService } from 'src/app/services/api-call/api-call.service';
 import { EmailValidatorService } from 'src/app/services/email-validator/email-validator.service';
 import { GoogleEventsService } from 'src/app/services/google-events/google-events.service';
-import { ApiCallService } from 'src/app/services/api-call/api-call.service';
-import { CookieService } from 'ngx-cookie-service';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-login-card',
@@ -25,10 +24,10 @@ export class LoginCardComponent implements OnInit {
     private apiCall: ApiCallService
   ) {
     this.userLoginDetails = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
 
-    }
+    };
   }
 
   ngOnInit() {
@@ -36,13 +35,13 @@ export class LoginCardComponent implements OnInit {
   }
 
   login() {
-    console.log(this.userLoginDetails);
+    this.userLoginDetails['password'] = md5(this.userLoginDetails['password']);
     this.apiCall.setPostParams(this.userLoginDetails);
     this.apiCall.doPost('profile', '/askLogin').subscribe((data: any) => {
-      console.log(data);
       if (data['login'] !== 'success') {
         return;
       }
+      this.cookieService.set('google_auth', 'false');
       this.cookieService.set('userId', data['id']);
       this.cookieService.set('email', data['email']);
       this.cookieService.set('imageURL', data['image_url']);
