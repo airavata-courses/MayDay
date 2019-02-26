@@ -26,7 +26,7 @@ public class Connector {
 		}
 		try {
 			connection = DriverManager.getConnection(CSTRING);
-			connection.setAutoCommit(false);
+			connection.setAutoCommit(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

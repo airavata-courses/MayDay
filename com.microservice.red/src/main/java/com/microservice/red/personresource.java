@@ -1,5 +1,10 @@
 package com.microservice.red;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -14,6 +19,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.json.simple.JSONObject;
 
 @Path("customers")
@@ -36,9 +43,16 @@ public class personresource {
 
 	@POST
 	@Path("customer")
-	public void createperson(person a1) {
-		repo.create(a1);
-
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response createperson(person a1) {
+		JSONObject obj = new JSONObject();
+		if(repo.create(a1)) {
+			obj.put("status", "success");
+		}
+		else {
+			obj.put("status", "failed");
+		}
+		return Response.status(Status.OK).entity(obj.toJSONString()).build();
 	}
 
 	@POST
@@ -54,8 +68,8 @@ public class personresource {
 		} else if (p.getPassword().equals(pdb.getPassword())) {
 			JSONObject obj = new JSONObject();
 			obj.put("login", "success");
-			obj.put("last_login", pdb.getLast_login().toString());
-			obj.put("image_url", pdb.getImage_url());
+			obj.put("name", pdb.getName());
+			obj.put("email", pdb.getEmail());
 			return Response.status(Status.OK).entity(obj.toJSONString()).build();
 		}
 		JSONObject obj = new JSONObject();
@@ -81,5 +95,33 @@ public class personresource {
 		}
 		repo.delete(email);
 	}
+	
+	/*
+	@POST
+	@Path("upload")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response uploadFile(  @FormDataParam("file") InputStream fileInputStream,
+	                                @FormDataParam("file") FormDataContentDisposition fileMetaData) throws Exception
+	{
+	    String UPLOAD_PATH = "./file/";
+	    try
+	    {
+	        int read = 0;
+	        byte[] bytes = new byte[1024];
+	 
+	        OutputStream out = new FileOutputStream(new File(UPLOAD_PATH + fileMetaData.getFileName()));
+	        while ((read = fileInputStream.read(bytes)) != -1)
+	        {
+	            out.write(bytes, 0, read);
+	        }
+	        out.flush();
+	        out.close();
+	    } catch (IOException e)
+	    {
+	        e.printStackTrace();
+	    }
+	    return Response.status(Status.OK).entity("{}").build();
+	}*/
 
 }
