@@ -82,7 +82,7 @@
 
 #style-3::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 	background-color: #F5F5F5;
 }
 
@@ -113,10 +113,12 @@
     margin-bottom: 0;
     max-height: 100%;
     overflow: hidden;
+    cursor: pointer;
   }
   
   .sample_container .name {
     margin-top: 10px;
+    cursor: pointer;
   }
   
   .highcontrast .e-custom-card.e-card .avatar-content {

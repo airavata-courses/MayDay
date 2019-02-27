@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,10 +20,12 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { HomePageComponent } from './components/home/home-page/home-page.component';
 import { LoginCardComponent } from './components/login/login-card/login-card.component';
 import { LoginPageComponent } from './components/login/login-page/login-page.component';
 import { SignupCardComponent } from './components/login/signup-card/signup-card.component';
+import { PracticesProfileComponent } from './components/practices-profile/practices-profile.component';
 import { NearbyContainerComponent } from './components/search/search-analytics/nearby-container/nearby-container.component';
 import { SearchAnalyticsComponent } from './components/search/search-analytics/search-analytics.component';
 import {
@@ -40,6 +43,7 @@ import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { MyMaterialModule } from './material.module';
 import { AppStoreService } from './services/app-store/app-store.service';
 import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
+import { DoctorBioComponent } from './components/doctor-bio/doctor-bio.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -70,7 +74,10 @@ export function getAuthServiceConfigs() {
     SearchHistoryContainerComponent,
     SearchTrendingContainerComponent,
     SearchCardLayoutComponent,
-    SearchPageComponent
+    SearchPageComponent,
+    DoctorProfileComponent,
+    PracticesProfileComponent,
+    DoctorBioComponent
 
   ],
   imports: [
@@ -92,7 +99,8 @@ export function getAuthServiceConfigs() {
     MatExpansionModule,
     HttpClientModule,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [{
     provide: AuthServiceConfig,
@@ -102,6 +110,7 @@ export function getAuthServiceConfigs() {
   AuthRouterGuardService,
   AppStoreService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DoctorProfileComponent, PracticesProfileComponent, DoctorBioComponent]
 })
 export class AppModule { }
