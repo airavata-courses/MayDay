@@ -11,15 +11,15 @@
             </div>
             <div class="e-card-header">
                 <div class="e-card-header-caption center">
-                    <div class="e-card-header-title name" (click)="openDialog('doctor')">{{data.profile.first_name + " " + data.profile.last_name }}</div>
+                    <div class="e-card-header-title name" (click)="openDialog('doctor')" >{{data.profile.first_name + " " + data.profile.last_name }}</div>
                     <div class="e-card-sub-title">{{data.specialties.length > 0 ? (data.specialties[0].actor + " (" +data.profile.title + ")") : "No Specialities"}}</div>
                 </div>
             </div>
             <div class="e-card-content">
-                <p class="avatar-content" (click)="openDialog('bio')">{{data.profile.bio.length > 230 ? data.profile.bio.substring(0, 230) + "..." : data.profile.bio   }}</p>
+                <p class="avatar-content" (click)="openDialog('bio')" >{{data.profile.bio.length > 230 ? data.profile.bio.substring(0, 230) + "..." : data.profile.bio   }}</p>
             </div>
             <div class="e-card-content doc-bio">
-                <button mat-raised-button (click)="openDialog('practice')">Practices</button>
+                <button mat-raised-button (click)="openDialog('practice')" >Practices</button>
             </div>
         </div>
     </div>
