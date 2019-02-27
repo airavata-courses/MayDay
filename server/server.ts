@@ -1,5 +1,5 @@
 import app from './app';
-import ZookeeperClient from '../zookeeper_client/zk_client';
+//mport ZookeeperClient from '../zookeeper_client/zk_client';
 
 const PORT: number = Number(process.argv[2]) || 3000;
 //new ZookeeperClient(['localhost:2181'], '/testpath2').connectToEnsemble();
