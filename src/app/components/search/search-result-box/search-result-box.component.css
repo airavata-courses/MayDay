@@ -65,8 +65,9 @@
   display: inline-block;
 }
 
-.pagination a {
+.pagination button {
   color: grey;
+  background: none;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
@@ -76,12 +77,12 @@
   cursor: pointer;
 }
 
-.pagination a.active-link {
+.pagination button.active-link {
   background-color: #ff0266;
   color: white;
   border: 1px solid #ff0266;
 }
-.pagination a:hover:not(.active) {
+.pagination button:hover:not(.active) {
   background-color: #ddd;
 }
 
@@ -100,6 +101,16 @@
 }
 
 .page-detail {
-  padding: 0.4rem;
+  padding: 0.46rem;
   color: #aaa;
+}
+
+.spinner {
+  margin: 0.5rem 0 0 0.55rem;
+}
+
+.spinnerdummy {
+  margin: 0.5rem 0 0 0.55rem;
+  width: 20px;
+  height: 20px;
 }

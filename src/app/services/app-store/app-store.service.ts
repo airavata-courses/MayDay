@@ -10,11 +10,13 @@ export class AppStoreService {
   dataEmitter: any;
   searchParams: Observable<any>;
   paramEmitter: any;
+  inProgress = false;
   constructor() {
     this.cleanData();
   }
   storeData(dataObservable: Observable<any>) {
     dataObservable.subscribe((data) => {
+      this.inProgress = false;
       this.dataEmitter.next(data);
     });
   }

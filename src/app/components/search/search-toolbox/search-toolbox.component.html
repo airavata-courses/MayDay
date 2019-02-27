@@ -13,6 +13,14 @@
         <mat-radio-button value="2">Drug</mat-radio-button>
       </mat-radio-group>
       <button mat-raised-button (click)="getDoctors()">SEARCH</button>
+      <mat-progress-spinner
+      *ngIf="dataStore.inProgress"
+      class="spinner"
+      [color]="'accent'"
+      [mode]="'indeterminate'"
+      [value]="1"
+      [diameter]="20">
+  </mat-progress-spinner>
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>

@@ -15,10 +15,10 @@ export class SearchToolboxComponent implements OnInit {
     user_location: '',
     skip: 0,
     limit: 5,
+    resetPagination: true
   };
-
   constructor(public apiCall: ApiCallService,
-    private dataStore: AppStoreService,
+    public dataStore: AppStoreService,
     private cookieService: CookieService) {
    }
 
@@ -30,6 +30,7 @@ export class SearchToolboxComponent implements OnInit {
     this.apiCall.setPostParams(this.doctorSearchParams);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
     this.dataStore.setSearchParameters(this.doctorSearchParams);
+    this.dataStore.inProgress = true;
     this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams.name,'userid':this.cookieService.get('email'),'req_param':this.doctorSearchParams,'endpoint':'/alldoctors'}]});	
     this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {	
     }); 

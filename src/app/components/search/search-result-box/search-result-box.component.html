@@ -8,14 +8,23 @@
     </div>
     <div class="pagination-container" *ngIf="metaData.total > metaData.limit">
         <div class="pagination">
-            <a (click)="pageClick(currentPageNumber-1)">&laquo;</a>
-            <a *ngFor="let page of pages" (click)="pageClick(page)"
-                [ngClass]="{'active-link': (page == currentPageNumber)}">{{page}}</a>
-            <a (click)=pageClick(currentPageNumber+1)>&raquo;</a>
+            <button [disabled]="searchStore.inProgress" (click)="pageClick(currentPageNumber-1)" >&laquo;</button>
+            <button [disabled]="searchStore.inProgress" *ngFor="let page of pages" (click)="pageClick(page)"
+                [ngClass]="{'active-link': (page == currentPageNumber)}">{{page}}</button>
+            <button [disabled]="searchStore.inProgress" (click)=pageClick(currentPageNumber+1)>&raquo;</button>
         </div>
         <div class="skip-pages">
             <input type="text" placeholder="skip to.." [(ngModel)]="currentPageNumber">
-            <button mat-raised-button color="accent" (click)="pageClick(currentPageNumber)">Go</button>
+            <button mat-raised-button color="accent" (click)="pageClick(currentPageNumber)" [disabled]="searchStore.inProgress">Go</button>
+            <mat-progress-spinner
+            *ngIf="searchStore.inProgress"
+            class="spinner"
+            [color]="'accent'"
+            [mode]="'indeterminate'"
+            [value]="1"
+            [diameter]="20">
+        </mat-progress-spinner>
+        <div class="spinnerdummy" *ngIf="!searchStore.inProgress"></div>
             <span class="page-detail">{{pageCount + " pages"}}</span>
         </div>
     </div>

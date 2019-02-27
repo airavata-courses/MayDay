@@ -55,3 +55,8 @@ mat-card div{
  ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
     background-color:rgba(66, 134, 244,.26);
   }
+
+.spinner {
+  display:inline;
+  margin-left: 1.5rem;
+}

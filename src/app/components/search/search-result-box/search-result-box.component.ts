@@ -16,35 +16,42 @@ export class SearchResultBoxComponent implements OnInit {
     location: '',
     user_location: '',
     skip: 0,
-    limit: 5,
+    limit: 0,
   };
+  inProgress = false;
   paramsFromSearchToolBox: any;
   currentPageNumber: number = 1;
   pages: number[] = [];
   pageCount: number;
   metaData = { 'count': 0, limit: 0, total: 0 };
   constructor(
-    private searchStore: AppStoreService,
+    public searchStore: AppStoreService,
     private apiCall: ApiCallService
   ) { }
 
   ngOnInit() {
+    const storedSearchParams = this.searchStore.getSearchParams().subscribe((params)=>{
+      this.doctorSearchParams.name = params ?  params.name || '' : '';
+      this.doctorSearchParams.skip = params ? params.skip || 5 : 5;
+      this.doctorSearchParams.limit = params ? params.limit || 5 : 5;
+      if(params.resetPagination) {
+        this.currentPageNumber = 1;
+      }
+    });
     this.searchStore.getData().subscribe((data) => {
       this.doctors = data['data'];
       this.metaData = data['meta'];
       this.doPagination();
     });
-    this.searchStore.getSearchParams().subscribe((params)=>{
-      this.doctorSearchParams.name =  params ?  params.name || '' : '';
-    });
+
   }
 
   doPagination() {
     let pageCountRange = [1, this.metaData.limit];
     this.pages = [];
-    this.pageCount = Math.trunc(this.metaData.total / this.metaData.limit) + (this.metaData.total / this.metaData.limit !== 0 ? 1 : 0);
+    this.pageCount = Math.trunc(this.metaData.total / this.metaData.limit) + (this.metaData.total % this.metaData.limit !== 0 ? 1 : 0);
     if (this.currentPageNumber >=  this.metaData.limit && (this.currentPageNumber + Math.trunc(this.metaData.limit/2)) <  this.pageCount) {
-      pageCountRange = [this.currentPageNumber - Math.trunc(this.metaData.limit/2), Number(this.currentPageNumber) + Math.trunc(this.metaData.limit/2)+1];
+      pageCountRange = [this.currentPageNumber - Math.trunc(this.metaData.limit/2), Number(this.currentPageNumber) + Math.trunc(this.metaData.limit/2) + this.metaData.limit % 2];
     } else if (this.currentPageNumber + Math.trunc(this.metaData.limit/2) >= this.pageCount) {
       pageCountRange = [this.pageCount - this.metaData.limit ,this.pageCount];
     }     
@@ -57,8 +64,9 @@ export class SearchResultBoxComponent implements OnInit {
     if(Number(pageNumber) < 1 || Number(pageNumber)-1 > this.pageCount) {
       return;
     }
+    this.searchStore.inProgress = true;
     this.currentPageNumber = Number(pageNumber);
-    this.doctorSearchParams['skip'] = (pageNumber-1) * 5;
+    this.doctorSearchParams['skip'] = (pageNumber-1) * this.doctorSearchParams.limit;
     this.apiCall.setPostParams(this.doctorSearchParams);
     this.searchStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
   }
