@@ -1,14 +1,8 @@
 import app from './app';
-//import * as fs from 'fs';
-//import * as https from 'https';
-const PORT = process.env.PORT || 3000;
+import ZookeeperClient from '../zookeeper_client/zk_client';
 
-/*const options = {
-    cert: fs.readFileSync('cert/ssl_host.crt'),
-    key: fs.readFileSync('cert/ssl_host.key')
-  };
-
-const server = https.createServer(options, app);*/
+const PORT: number = Number(process.argv[2]) || 3000;
+//new ZookeeperClient(['localhost:2181'], '/testpath2').connectToEnsemble();
 app.listen(PORT,() => {
-    console.log('Express server listening on port ' + PORT);
+    console.log('Purple listening on port ' + PORT);
 });
