@@ -39,17 +39,14 @@ export class ApiCallService {
 
 
   doPost(endpoint: string, uri: string=''): Observable<any> {
-    console.log(endpoint, this.apiEndPoints[endpoint]);
     return this.http.post(this.apiEndPoints[endpoint] + uri, this.postParams);
   }
 
   doGet(endpoint: string, uri: string=''): Observable<any> {
-    console.log(endpoint, this.apiEndPoints[endpoint]);
     return this.http.get(this.apiEndPoints[endpoint] + uri);
   }
 
   doPut(endpoint: string, uri: string=''): Observable<any> {
-    console.log(endpoint, this.apiEndPoints[endpoint]);
     return this.http.put(this.apiEndPoints[endpoint] + uri, this.postParams);
   }
 
