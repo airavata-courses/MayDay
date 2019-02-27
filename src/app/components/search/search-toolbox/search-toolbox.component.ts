@@ -27,8 +27,6 @@ export class SearchToolboxComponent implements OnInit {
   }
 
   getDoctors() {
-    this.doctorSearchParams['location'] = '37.773,-122.413,100';
-    this.doctorSearchParams['user_location'] = '37.773,-122.413';
     this.apiCall.setPostParams(this.doctorSearchParams);
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
     this.dataStore.setSearchParameters(this.doctorSearchParams);

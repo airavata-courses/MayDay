@@ -43,12 +43,11 @@ export class SearchResultBoxComponent implements OnInit {
     let pageCountRange = [1, this.metaData.limit];
     this.pages = [];
     this.pageCount = Math.trunc(this.metaData.total / this.metaData.limit) + (this.metaData.total / this.metaData.limit !== 0 ? 1 : 0);
-    if (this.currentPageNumber >  this.metaData.limit && this.currentPageNumber <  this.pageCount) {
+    if (this.currentPageNumber >=  this.metaData.limit && (this.currentPageNumber + Math.trunc(this.metaData.limit/2)) <  this.pageCount) {
       pageCountRange = [this.currentPageNumber - Math.trunc(this.metaData.limit/2), Number(this.currentPageNumber) + Math.trunc(this.metaData.limit/2)+1];
-    } else if (this.currentPageNumber >= this.pageCount) {
-      pageCountRange=[this.currentPageNumber - this.metaData.limit ,this.currentPageNumber];
-    } 
-    
+    } else if (this.currentPageNumber + Math.trunc(this.metaData.limit/2) >= this.pageCount) {
+      pageCountRange = [this.pageCount - this.metaData.limit ,this.pageCount];
+    }     
     for (let i = pageCountRange[0]; i <= pageCountRange[1]; i++) {
       this.pages.push(i);
     }
@@ -59,9 +58,7 @@ export class SearchResultBoxComponent implements OnInit {
       return;
     }
     this.currentPageNumber = Number(pageNumber);
-    this.doctorSearchParams['location'] = '37.773,-122.413,100';
-    this.doctorSearchParams['user_location'] = '37.773,-122.413';
-    this.doctorSearchParams['skip'] = pageNumber-1;
+    this.doctorSearchParams['skip'] = (pageNumber-1) * 5;
     this.apiCall.setPostParams(this.doctorSearchParams);
     this.searchStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
   }
