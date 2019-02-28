@@ -6,7 +6,7 @@ class H2Connection:
 	connection = None
 
 	h2DriverClass = 'org.h2.Driver'
-	h2ConnectionString = 'jdbc:h2:./sanjeevni'
+	h2ConnectionString = 'jdbc:h2:./sanjeevni;AUTO_RECONNECT=TRUE'
 	h2Creds = ['admin', 'admin']
 	h2Jar = './h2-1.4.197.jar'
 
@@ -22,6 +22,8 @@ class H2Connection:
 
 	def executeSQL(self, sqlContents):
 		self.cursor.execute(sqlContents)
+	def commit(self):
+		self.connection.commit()
 
 	def getResponse(self):
 		return json.dumps(self.cursor.fetchall())
