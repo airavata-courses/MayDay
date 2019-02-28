@@ -25,9 +25,18 @@ public class personrepository {
 			while (rs.next()) {
 				person a = new person();
 
+				a.setUser_id(rs.getInt("user_id"));
 				a.setEmail(rs.getString("email"));
 				a.setName(rs.getString("name"));
 				a.setPassword(rs.getString("password"));
+				a.setAddress(rs.getString("address"));
+				a.setZipcode(rs.getInt("zipcode"));
+				a.setLatitude(rs.getFloat("latitude"));
+				a.setLongitude(rs.getFloat("longitude"));
+				a.setImage_url(rs.getString("image_url"));
+				a.setLogged_in(rs.getBoolean("logged_in"));
+				a.setLast_login(rs.getDate("last_login"));
+
 				persons.add(a);
 			}
 		} catch (Exception e) {
@@ -44,9 +53,17 @@ public class personrepository {
 			ResultSet rs = st.executeQuery(sql);
 
 			if (rs.next()) {
+				a.setUser_id(rs.getInt("user_id"));
 				a.setEmail(rs.getString("email"));
 				a.setName(rs.getString("name"));
 				a.setPassword(rs.getString("password"));
+				a.setAddress(rs.getString("address"));
+				a.setZipcode(rs.getInt("zipcode"));
+				a.setLatitude(rs.getFloat("latitude"));
+				a.setLongitude(rs.getFloat("longitude"));
+				a.setImage_url(rs.getString("image_url"));
+				a.setLogged_in(rs.getBoolean("logged_in"));
+				a.setLast_login(rs.getDate("last_login"));
 
 			}
 		} catch (Exception e) {
@@ -57,27 +74,32 @@ public class personrepository {
 		return a;
 	}
 
-	public boolean create(person a1) {
-		int status = 0;
-		String sql = "insert into person (email, name, password) values (?,?,?)";
+	public void create(person a1) {
+		String sql = "insert into person (user_id, email, name, password, address, zipcode, latitude, longitude, image_url, logged_in, last_login) values (?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP());";
 		try {
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, a1.getEmail());
-			st.setString(2, a1.getName());
-			st.setString(3, a1.getPassword());
-			status = st.executeUpdate();
+			st.setInt(1, a1.getUser_id());
+			st.setString(2, a1.getEmail());
+			st.setString(3, a1.getName());
+			st.setString(4, a1.getPassword());
+			st.setString(5, a1.getAddress());
+			st.setInt(6, a1.getZipcode());
+			st.setFloat(7, a1.getLatitude());
+			st.setFloat(8, a1.getLongitude());
+			st.setString(9, a1.getImage_url());
+			st.setBoolean(10, a1.isLogged_in());
+			st.executeUpdate();
+			con.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			status = 0;
 		}
-		return status !=0;
-		
 	}
 
 	public void update(person a1) {
-		String sql = "update person set name=? WHERE email=?";
+		String sql = "update person set name=? , email=? where user_id=? ";
 		try {
 			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, a1.getUser_id());
 			st.setString(2, a1.getEmail());
 			st.setString(3, a1.getName());
 			st.executeUpdate();
