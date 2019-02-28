@@ -10,10 +10,6 @@
 			<param-name>jersey.config.server.provider.packages</param-name>
 			<param-value>com.microservice.red</param-value>
 		</init-param>
-		<init-param>
-			<param-name>org.glassfish.jersey.spi.container.ContainerRequestFilters</param-name>
-			<param-value>com.microservice.filter.CorsFilter</param-value>
-		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
