@@ -1,11 +1,6 @@
 from app import App
 from waitress import serve
-import sys
+import config as config
 
-if (len(sys.argv) == 3 and sys.argv[1] == "PORT"):
-    PORT = sys.argv[2]
-else:
-    PORT = 7000
-
-serve(App().get_api(), host='0.0.0.0', port=PORT) 
+serve(App().get_api(), host='0.0.0.0', port=config.PORT) 
 
