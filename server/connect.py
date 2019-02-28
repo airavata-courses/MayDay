@@ -6,7 +6,7 @@ class H2Connection:
 	connection = None
 
 	h2DriverClass = 'org.h2.Driver'
-	h2ConnectionString = 'jdbc:h2:./test'
+	h2ConnectionString = 'jdbc:h2:./sanjeevni'
 	h2Creds = ['admin', 'admin']
 	h2Jar = './h2-1.4.197.jar'
 

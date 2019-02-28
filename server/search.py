@@ -32,7 +32,7 @@ class Search(object):
     def on_get(self, req, resp):
         ob = db()
         search = Search()
-        ob.executeSQL(ob.readSQLFromFile('sample.sql'))
+        ob.executeSQL(ob.readSQLFromFile('sanjeevni_db.sql'))
         ob.executeSQL('SELECT * FROM sanjeevi_search_history;')
         data = search.parseJson_fromQuery(ob.getResponse())
         resp.set_header('response', '200 OK')
