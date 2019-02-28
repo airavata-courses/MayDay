@@ -3,18 +3,44 @@ import msgpack
 import falcon
 import time
 from collections import OrderedDict
-
+from connect import H2Connection as db
 
 class Search(object):
     
+    # ob =  None
+    # def __init__(self):
+    #     self.ob = db()
+
+    def parseJson_fromQuery(self, response):
+        data ={}
+        data["recent_result"] = []
+        for result in json.loads(response):
+            record = {}
+            count = 0
+            record["userid"] = result[count]
+            count += 1
+            record["search_string"] = result[count]
+            count += 1
+            record["req_param"] = result[count]
+            count += 1
+            record["endpoint"] = result[count]
+            count += 1
+            record["timestamp"] = result[count]
+            data["recent_result"].append(record)
+        return data
     
     def on_get(self, req, resp):
-        with open('data.json') as json_file:  
-            data = json.load(json_file)
-            resp.set_header('response', '200 OK')
-            resp.set_header('Access-Control-Allow-Origin', '*')
-            resp.body = json.dumps(OrderedDict(data), ensure_ascii=False,sort_keys=True, indent=4)
-            resp.status = falcon.HTTP_200
+        ob = db()
+        search = Search()
+        ob.executeSQL(ob.readSQLFromFile('sample.sql'))
+        ob.executeSQL('SELECT * FROM sanjeevi_search_history;')
+        data = search.parseJson_fromQuery(ob.getResponse())
+        resp.set_header('response', '200 OK')
+        resp.set_header('Access-Control-Allow-Origin', '*')
+        print data
+        resp.body = json.dumps(data, ensure_ascii=False,sort_keys=True, indent=4) 
+        resp.status = falcon.HTTP_200
+        ob.destroy()
 
 
     def on_post(self, req, res):
@@ -38,7 +64,7 @@ class Search(object):
                 "message" : "Created",
                 "data":posted_data
             }
-
+            
             recent_result = {
                 "userid":obj["data"]["recent_result"][0]["userid"],
                 "search_string":obj["data"]["recent_result"][0]["search_string"],
