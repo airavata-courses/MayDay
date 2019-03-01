@@ -1,20 +1,17 @@
 import jaydebeapi
 import json
+import jpype
 
 class H2Connection:
-	
-	connection = None
 
 	h2DriverClass = 'org.h2.Driver'
-	h2ConnectionString = 'jdbc:h2:./sanjeevni;AUTO_RECONNECT=TRUE'
+	h2ConnectionString = 'jdbc:h2:./dbfiles/sanjeevni;AUTO_RECONNECT=TRUE'
 	h2Creds = ['admin', 'admin']
-	h2Jar = './h2-1.4.197.jar'
+	h2Jar = 'dbfiles/h2-1.4.197.jar'
 
-	cursor = None
-
-	def __init__(self):
-		self.connection = jaydebeapi.connect(self.h2DriverClass, self.h2ConnectionString, self.h2Creds, self.h2Jar)
-		self.cursor = self.connection.cursor()
+	connection = jaydebeapi.connect(h2DriverClass, h2ConnectionString, h2Creds, jars=[h2Jar])
+	jpype.attachThreadToJVM()
+	cursor = connection.cursor()
 
 	def readSQLFromFile(self, sqlfile):
 		sqlFile = open(sqlfile, 'r')
@@ -22,6 +19,7 @@ class H2Connection:
 
 	def executeSQL(self, sqlContents):
 		self.cursor.execute(sqlContents)
+
 	def commit(self):
 		self.connection.commit()
 
@@ -32,10 +30,9 @@ class H2Connection:
 		self.connection.close()
 		self.cursor.close()
 
+	def init_database(self):
+		self.executeSQL(self.readSQLFromFile('dbfiles/sanjeevni_db.sql'))
 
-
-# ob = H2Connection()
-# ob.executeSQL(ob.readSQLFromFile('sample.sql'))
 # ob.executeSQL('SELECT * FROM student;')
 # print ob.getResponse()
 # ob.destroy()
