@@ -20,13 +20,13 @@ export default class ZookeeperClient {
     }
 
     createNode() {
-        this.zk_client.create(this.zNodePath, CreateMode.EPHEMERAL, (error: Error) => {
+        this.zk_client.create(this.zNodePath, CreateMode.EPHEMERAL_SEQUENTIAL, (error: Error) => {
             if(error) {
                 console.log("can't create path: ",error);
             } else {
                 console.log('connected to znode ', this.zNodePath);
             }
-            this.zk_client.close();
+            //this.zk_client.close();
         });
     }
 
