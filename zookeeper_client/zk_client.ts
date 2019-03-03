@@ -3,7 +3,7 @@ import {join as loJoin} from 'lodash';
 import { createClient, CreateMode, Option, Client } from 'node-zookeeper-client';
 
 export default class ZookeeperClient {
-
+  
     zk_client: Client;
     zNodePath: string;
     zkConnectionString: string[];
