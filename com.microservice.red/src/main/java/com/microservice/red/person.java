@@ -31,4 +31,5 @@ public class person {
 	public void setPassword(String password) {
 		this.password = password;
 	}	
+	
 }
