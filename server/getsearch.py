@@ -22,8 +22,8 @@ class GetSearch(object):
                 record["userid"] = userid
             record["search_string"] = result[count]
             count += 1
-            record["req_param"] = result[count]
-            count += 1
+            # record["req_param"] = result[count]
+            # count += 1
             record["endpoint"] = result[count]
             count += 1
             record["frequency"] = result[count]
@@ -38,10 +38,10 @@ class GetSearch(object):
             ob.executeSQL(ob.readSQLFromFile('sanjeevni_db.sql'))
             if "userid" not in req.params:
                 userid = ""
-                ob.executeSQL("SELECT h.search_string , h.req_param, h.endpoint, count(h.search_string) from sanjeevi_search_history as h GROUP BY h.search_string")
+                ob.executeSQL("SELECT h.search_string , h.endpoint, count(h.search_string) from sanjeevi_search_history as h GROUP BY h.search_string")
             else:
                 userid = req.params['userid']
-                ob.executeSQL("SELECT TOP 10 h.search_string , h.req_param, h.endpoint, count(h.search_string) from sanjeevi_search_history as h where h.userid like '"+req.params["userid"]+"' GROUP BY h.search_string")
+                ob.executeSQL("SELECT TOP 10 h.search_string , h.endpoint, count(h.search_string) from sanjeevi_search_history as h where h.userid like '"+req.params["userid"]+"' GROUP BY h.search_string")
             data = self.parseJson_fromQuery(ob.getResponse() ,userid)
             ob.destroy()
             resp.set_header('response', '200 OK')
