@@ -19,4 +19,14 @@
 		<servlet-name>Test Jersey Service </servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ZooKeeperStartup</servlet-name>
+		<servlet-class>com.zookeeper.app.ZookeeperManager</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ZooKeeperStartup</servlet-name>
+		<url-pattern>/dummy</url-pattern>
+	</servlet-mapping>
 </web-app>
