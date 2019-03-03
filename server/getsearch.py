@@ -8,9 +8,6 @@ from retrying import retry
 
 class GetSearch(object):
     
-    # ob =  None
-    # def __init__(self):
-    #     self.ob = db()
 
     def parseJson_fromQuery(self, response, userid):
         data ={}
@@ -22,8 +19,6 @@ class GetSearch(object):
                 record["userid"] = userid
             record["search_string"] = result[count]
             count += 1
-            # record["req_param"] = result[count]
-            # count += 1
             record["endpoint"] = result[count]
             count += 1
             record["frequency"] = result[count]
