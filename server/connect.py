@@ -1,5 +1,6 @@
 import jaydebeapi
 import json
+import jpype
 
 class H2Connection:
 	
@@ -13,7 +14,11 @@ class H2Connection:
 	cursor = None
 
 	def __init__(self):
+		if jpype.isJVMStarted() and not jpype.isThreadAttachedToJVM():
+			jpype.attachThreadToJVM()
+			jpype.java.lang.Thread.currentThread().setContextClassLoader(jpype.java.lang.ClassLoader.getSystemClassLoader())
 		self.connection = jaydebeapi.connect(self.h2DriverClass, self.h2ConnectionString, self.h2Creds, self.h2Jar)
+		#self.connection = jaydebeapi.connect(self.h2DriverClass, self.h2ConnectionString, self.h2Creds, self.h2Jar)
 		self.cursor = self.connection.cursor()
 
 	def readSQLFromFile(self, sqlfile):

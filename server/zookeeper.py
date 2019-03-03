@@ -2,15 +2,15 @@ from kazoo.client import KazooClient
 from kazoo.client import KazooState
 from kazoo.client import KeeperState
 from kazoo.exceptions import NodeExistsError, NoNodeError, ConnectionLossException
-#from falcon import request, jsonify
 from json import load
 import requests
 import json
+import config as config
 
 # Zookeeper Service Registry
 class ZookeeperHandler:
     def registerAuthService(self,port):
-        zk = KazooClient(hosts='149.165.170.230:2181', read_only=True)
+        zk = KazooClient(hosts= config.ZK, read_only=True)
         zk.start()
         path = '/Blue'
         host= str(requests.get('https://ip.42.pl/raw').text)
