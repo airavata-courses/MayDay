@@ -8,13 +8,14 @@
     </span>
     <mat-divider></mat-divider>
     <div class="search-history-panel">
-      <div class="card  card--z-1" *ngFor="let r of recent_search">{{r.search_string}} 
-        <!-- <a class="search-history-card">{{r.search_string}} </a> -->
+      <ng-container class="ngcont" *ngFor="let r of recent_search">
+      <div matBadge={{r.frequency}} matBadgeOverlap="true" matBadgeColor="accent" class="card  card--z-1">
+        {{r.search_string}}
       </div>
-     
-    </div>
+    </ng-container>
   </div>
-  <span>
-      <label id="history-doctors-footer" (click) = "getData()">View More ...</label>
-    </span>
+</div>
+<span>
+  <label id="history-doctors-footer" (click)="getData()">Refresh feed ...</label>
+</span>
 </div>

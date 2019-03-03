@@ -8,6 +8,7 @@ import { ApiCallService } from 'src/app/services/api-call/api-call.service';
 })
 export class SearchHistoryContainerComponent implements OnInit {
   recent_search: any;
+  frequency: any;
   constructor(public apiCall: ApiCallService) { }
 
   ngOnInit() {
@@ -18,6 +19,7 @@ export class SearchHistoryContainerComponent implements OnInit {
     setTimeout(() => {
       this.apiCall.doGet('search_analytics', '/search/all').subscribe((data) => {
         this.recent_search = data['recent_result'];
+        // this.frequency = this.recent_search.frequency;
       });
     }, 600);
     
