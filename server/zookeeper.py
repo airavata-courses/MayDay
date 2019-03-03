@@ -16,7 +16,7 @@ class ZookeeperHandler:
         host= str(requests.get('https://ip.42.pl/raw').text)
         pass_data=json.dumps({"host":host, "port":port}).encode('utf-8')
         try:
-            zk.create(path,value=pass_data, ephemeral=True, makepath=True)
+            zk.create(path,value=pass_data, ephemeral=True, sequence=True, makepath=True)
             print("Blue Service is running '"+path+"' here.")
         except NodeExistsError:
             print("Node already exists in Zookeeper")
