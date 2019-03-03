@@ -17,6 +17,8 @@ export class Routes {
             res.status(200).send('OK');
         });
         
+        
+        
         app.route('/*').post(async (req: Request, res: Response) => {
             const paramsFromRequest: any = req.body;
             const path = req.path.replace(/\//g,'');
