@@ -31,7 +31,7 @@ export class SearchToolboxComponent implements OnInit {
     this.dataStore.storeData(this.apiCall.doPost('doctors_and_drugs', '/alldoctors'));
     this.dataStore.setSearchParameters(this.doctorSearchParams);
     this.dataStore.inProgress = true;
-    this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams.name,'userid':this.cookieService.get('email'),'req_param':this.doctorSearchParams,'endpoint':'/alldoctors'}]});	
+    this.apiCall.setPostParams({'recent_result':[{'search_string':this.doctorSearchParams.name,'userid':this.cookieService.get('email'),'endpoint':'/alldoctors'}]});	
     this.apiCall.doPost('search_analytics', '/search/recent').subscribe((data) => {	
     }); 
 
