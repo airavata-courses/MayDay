@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DialogService } from 'src/app/services/dialog-service/dialog.service';
 import { DoctorProfileComponent } from 'src/app/components/doctor-profile/doctor-profile.component';
 import { PracticesProfileComponent } from 'src/app/components/practices-profile/practices-profile.component';
-import { DoctorBioComponent } from 'src/app/components/doctor-bio/doctor-bio.component';
 import { ComponentType } from '@angular/core/src/render3';
 
 @Component({
@@ -18,8 +17,7 @@ export class SearchCardLayoutComponent {
   openDialog(type: string) {
     let component: any = null;
     switch(type) {
-      case 'bio': component = DoctorBioComponent; break;
-      case 'doctor': component = PracticesProfileComponent; break;
+      case 'doctor': component = DoctorProfileComponent; break;
       case 'practice': component = PracticesProfileComponent; break;
     }
     this.dialogService.openDialog(component, this.data);

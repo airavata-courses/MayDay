@@ -1,3 +1,41 @@
-<p>
-  doctor-profile works!
-</p>
+<div class="doctor-profile-wrapper">
+
+  <div class="doctor-profile-main-container">
+    <img class="profile-photo" [src]="data.profile.image_url" />
+    <div class="doctor-name-container">
+      <span
+        class="doctor-name">{{data.profile.first_name + ' ' + data.profile.last_name + " (" + data.profile.title + ")"}}</span>
+    </div>
+    <div class="rating-container" *ngIf="data.ratings.length != 0">
+      <img *ngIf="data.ratings[0].image_url_large" [src]="data.ratings[0].image_url_large" />
+    </div>
+  </div>
+
+  <div class="doctor-detail-container">
+    <div class="speciality">
+      <div class="speciality-actor">
+        {{data.specialties[0].actor}}
+      </div>
+      <div class="speciality-description">
+        {{data.specialties[0].description}}
+      </div>
+    </div>
+    <div class="doctor-bio">
+      {{data.profile.bio}}
+    </div>
+    <div class="doctor-education" *ngIf="data.educations.length != 0">
+      <table>
+        <tr *ngFor="let edu of data.educations">
+          <td>
+            <mat-icon >school</mat-icon>
+          </td>
+          <td>
+            <div class="education-detail">
+            {{edu.school + " ("+ edu.degree +")"}}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

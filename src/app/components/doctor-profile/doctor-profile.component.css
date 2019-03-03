@@ -1,0 +1,61 @@
+.doctor-profile-wrapper {
+    width: 100%;
+    display: flex;
+}
+
+.doctor-profile-main-container {
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    height: auto;
+    padding-right: 1rem; 
+    text-align: center;
+}
+
+.profile-photo {
+    margin-bottom: 1rem;
+}
+
+.doctor-name-container {
+    margin-bottom: 1rem;
+}
+
+.doctor-name-container .doctor-name {
+    color: rgba(83, 101, 132, 0.65);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.rating-container {
+    margin-bottom: 1rem;
+}
+
+.doctor-detail-container {
+    width: calc(80% - 4rem);
+    height: 100%;
+    margin-left: 3rem;
+    height: auto;
+}
+
+.speciality {
+    color: rgb(94, 94, 94);
+    margin-bottom: 1rem;
+}
+
+.speciality-actor {
+    font-weight: bold;
+}
+
+
+.doctor-bio {
+    color: rgb(94, 94, 94);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.doctor-education mat-icon {
+    color: #F06292;
+}
+.education-detail {
+    color: rgb(94, 94, 94);
+}

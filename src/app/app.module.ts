@@ -43,7 +43,6 @@ import { NavbarComponent } from './components/toolbar/navbar/navbar.component';
 import { MyMaterialModule } from './material.module';
 import { AppStoreService } from './services/app-store/app-store.service';
 import { AuthRouterGuardService } from './services/router-guard/auth-router-guard.service';
-import { DoctorBioComponent } from './components/doctor-bio/doctor-bio.component';
 
 export function getAuthServiceConfigs() {
   const config = new AuthServiceConfig(
@@ -76,9 +75,7 @@ export function getAuthServiceConfigs() {
     SearchCardLayoutComponent,
     SearchPageComponent,
     DoctorProfileComponent,
-    PracticesProfileComponent,
-    DoctorBioComponent
-
+    PracticesProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -111,6 +108,6 @@ export function getAuthServiceConfigs() {
   AppStoreService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DoctorProfileComponent, PracticesProfileComponent, DoctorBioComponent]
+  entryComponents: [DoctorProfileComponent, PracticesProfileComponent]
 })
 export class AppModule { }
