@@ -1,3 +1,15 @@
-<p>
-  practices-profile works!
-</p>
+<div>
+  Practice Center : {{pratice_center}}
+</div>
+<div>
+  {{address}}
+</div>
+<div>
+  {{phone}}
+</div>
+<div *ngIf="haswebsite == true">
+ Website: <a href={{website}}>{{website}}</a>
+</div>
+<div *ngIf="hasemail == true">
+  Email: {{email}}
+</div>

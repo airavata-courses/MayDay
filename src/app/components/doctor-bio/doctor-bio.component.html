@@ -1,3 +1,14 @@
-<p>
-  {{data.profile.bio}}
-</p>
+<div>
+  <h3>{{data.profile.first_name}} {{data.profile.last_name}}</h3>
+  <div *ngIf="israted">
+    {{ratings}}
+    <img src={{ratings_stars}} />
+  </div>
+  <div>
+    Specialties : {{specialties.actor}} <br>
+    Dept. : {{specialties.name}}<br>
+    Title : {{data.profile.title}}<br>
+    Description : {{specialties.description}}<br>
+  </div>
+
+</div>
