@@ -73,7 +73,7 @@ span #history-doctors-footer:hover{
   background: white;
   display: inline-block;
    padding: 1%; */
-   width: 3em;
+   width: auto;
    height: 2em;
    margin: 2em;
    border-radius: 10px;
