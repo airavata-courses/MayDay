@@ -39,9 +39,3 @@ class H2Connection:
 		self.cursor.close()
 
 
-
-# ob = H2Connection()
-# ob.executeSQL(ob.readSQLFromFile('sample.sql'))
-# ob.executeSQL('SELECT * FROM student;')
-# print ob.getResponse()
-# ob.destroy()
