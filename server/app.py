@@ -9,7 +9,7 @@ cors = CORS(allow_origins_list=['http://localhost:3000', 'http://js-168-167.jets
             allow_all_headers=True,
             allow_all_methods=True,
 			allow_all_origins=True)
-class App:
+class App: 
 
 	api = None
 	search = None

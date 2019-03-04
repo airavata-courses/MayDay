@@ -12,6 +12,7 @@ class H2Connection:
 	h2Jar = './h2-1.4.197.jar'
 
 	cursor = None
+	
 
 	def __init__(self):
 		if jpype.isJVMStarted() and not jpype.isThreadAttachedToJVM():
