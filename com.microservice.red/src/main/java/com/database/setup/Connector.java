@@ -40,7 +40,7 @@ public class Connector {
 	private void runSchema() {
 		try {
 			Statement stmt = connection.createStatement();
-			//stmt.executeUpdate(Queries.PERSONSCHEMACLEANUP);
+			stmt.executeUpdate(Queries.PERSONSCHEMACLEANUP);
 			stmt.executeUpdate(Queries.PERSONSCHEMA);
 			//stmt.execute(Queries.PERSONMOCKDATA);
 		} catch (SQLException e) {
