@@ -1,7 +1,6 @@
 from connect import H2Connection as db
 
 
-
 class DB:
     db = None
     
