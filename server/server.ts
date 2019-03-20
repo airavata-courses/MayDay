@@ -1,5 +1,4 @@
 import app from './app';
-import ZookeeperClient from '../zookeeper_client/zk_client';
 import { OptionList, Content } from 'command-line-usage';
 import commandLineUsage = require('command-line-usage');
 import { OptionDefinition } from 'command-line-args';
@@ -30,12 +29,6 @@ if (options['--help']) {
 }
 
 const PORT: number = options['port'];
-if(options['zkservers']) {
-    const ZKSERVERS: string[] = options['zkservers'];
-    const zk = new ZookeeperClient(ZKSERVERS, '/purpleznode1');
-    zk.connectToEnsemble();   
-}
-
 
 app.listen(PORT,() => {
     console.log('Purple listening on port ' + PORT);
