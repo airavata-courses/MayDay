@@ -34,16 +34,16 @@ systemctl enable --now kubelet
 # make network bridges
 sudo ./make_network_bridge
 
-# init kubernetes master
-if [ $1 == "master" ];
+#init kubernetes master
+if [ "$1" == "master" ];
 then
-	sudo kubeadm reset
-	sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$local_ip
+        sudo kubeadm reset
+        sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$local_ip
 
-	echo "Kubernet master housekeeping"
-	mkdir -p $HOME/.kube
-	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-	sudo chown $(id -u):$(id -g) $HOME/.kube/config
+        echo "Kubernet master housekeeping"
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
 fi
 
 
@@ -51,4 +51,8 @@ fi
 kubectl get pods -o wide --all-namespaces
 
 # add pod networks
+
 kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+
+# print master details
+kubectl get pods -o wide --all-namespaces
