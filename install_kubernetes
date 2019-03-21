@@ -37,6 +37,7 @@ systemctl enable --now kubelet
 sudo ./make_network_bridge
 
 # init kubernetes master
+sudo kubedad reset
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$local_ip
 
 # Run if master flag is true

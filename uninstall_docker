@@ -3,4 +3,4 @@
 # uninstall docker
 sudo yum remove  docker-ce docker-ce-cli containerd.io
 
-sudo rm -rf /var/lib docker /etc/docker
+sudo rm -rf /var/lib/docker /etc/docker
