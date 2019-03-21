@@ -31,29 +31,24 @@ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl enable --now kubelet
 
-
-
 # make network bridges
 sudo ./make_network_bridge
 
 # init kubernetes master
-sudo kubedad reset
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$local_ip
+if [ $1 == "master" ];
+then
+	sudo kubeadm reset
+	sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$local_ip
 
-# Run if master flag is true
-echo "Kubernet master housekeeping"
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
+	echo "Kubernet master housekeeping"
+	mkdir -p $HOME/.kube
+	sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+	sudo chown $(id -u):$(id -g) $HOME/.kube/config
+fi
 
- 
 
 # print master details
 kubectl get pods -o wide --all-namespaces
 
 # add pod networks
 kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-
-
-# run only if node is child
-#kubeadm join 10.1.0.20:6443 --token 0pt9qs.dsjcdzhpc88c040y --discovery-token-ca-cert-hash sha256:040d57aa3fd8eb57feece5cb2b0eca826cdb716266d4b39e8a8596390f801600
