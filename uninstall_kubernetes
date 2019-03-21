@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# uninstall kubernetes
+kubeadm reset
+sudo yum remove  kubeadm kubelet kubernetes-cni
+sudo rm -rf /etc/kubernetes
+sudo rm -rf /var/lib/etcd
+
+
+# check if lsof exists
+lsof --help > /dev/null
+if [ $? != 0 ];
+then
+	sudo yum install lsof
+fi
+
+# kill kubernetes processes
+sudo kill -9 $(sudo lsof -i:10250 -t)
+sudo kill -9 $(sudo lsof -i:10251 -t)
+sudo kill -9 $(sudo lsof -i:10252 -t)
+sudo kill -9 $(sudo lsof -i:8001 -t)
+sudo kill -9 $(sudo lsof -i:6443 -t)
+sudo kill -9 $(sudo lsof -i:2379 -t)
+sudo kill -9 $(sudo lsof -i:2380 -t)

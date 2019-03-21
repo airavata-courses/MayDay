@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Get IP
+local_ip=`hostname -I | awk '{ print $1 }'`
+
+# Get hostname
+hostname=`hostname`
+
+
+# write ip hostname mapping to /etc/hosts
+sudo echo "$local_ip  $hostname" >> /etc/hosts
+
+# install kubernetes
+#/bin/bash
+cat <<EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kube*
+EOF
+
+# Set SELinux in permissive mode (effectively disabling it)
+setenforce 0
+sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+
+systemctl enable --now kubelet
+
+
+
+# make network bridges
+sudo ./make_network_bridge
+
+# init kubernetes master
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$local_ip
+
+# Run if master flag is true
+echo "Kubernet master housekeeping"
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+ 
+
+# print master details
+kubectl get pods -o wide --all-namespaces
+
+# add pod networks
+kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+
+
+# run only if node is child
+#kubeadm join 10.1.0.20:6443 --token 0pt9qs.dsjcdzhpc88c040y --discovery-token-ca-cert-hash sha256:040d57aa3fd8eb57feece5cb2b0eca826cdb716266d4b39e8a8596390f801600
