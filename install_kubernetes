@@ -7,6 +7,20 @@ local_ip=`hostname -I | awk '{ print $1 }'`
 hostname=`hostname`
 
 
+# certificate maker
+makeCert() {
+	if [ ! -d $HOME/kuberdashcerts ]; 
+	then
+		mkdir $HOME/kuberdashcerts
+		openssl genrsa -des3 -passout pass:x -out $HOME/kuberdashcerts/dashboard.pass.key 2048
+		openssl rsa -passin pass:x -in $HOME/kuberdashcerts/dashboard.pass.key -out $HOME/kuberdashcerts/dashboard.key
+		rm $HOME/kuberdashcerts/dashboard.pass.key
+		openssl req -new -key $HOME/kuberdashcerts/dashboard.key -out $HOME/kuberdashcerts/dashboard.csr
+		openssl x509 -req -sha256 -days 365 -in $HOME/kuberdashcerts/dashboard.csr -signkey $HOME/kuberdashcerts/dashboard.key -out $HOME/kuberdashcerts/dashboard.crt
+	fi
+	kubectl create secret generic kubernetes-dashboard-certs --from-file=$HOME/kuberdashcerts -n kube-system
+}
+
 # write ip hostname mapping to /etc/hosts
 sudo echo "$local_ip  $hostname" >> /etc/hosts
 
@@ -61,18 +75,3 @@ then
 	echo $secret
 	sudo kubectl -n kube-system get service kubernetes-dashboard
 fi
-
-
-
-makeCert() {
-	if [ ! -d $HOME/kuberdashcerts ]; 
-	then
-		mkdir $HOME/kuberdashcerts
-		openssl genrsa -des3 -passout pass:x -out $HOME/kuberdashcerts/dashboard.pass.key 2048
-		openssl rsa -passin pass:x -in $HOME/kuberdashcerts/dashboard.pass.key -out $HOME/kuberdashcerts/dashboard.key
-		rm $HOME/kuberdashcerts/dashboard.pass.key
-		openssl req -new -key $HOME/kuberdashcerts/dashboard.key -out $HOME/kuberdashcerts/dashboard.csr
-		openssl x509 -req -sha256 -days 365 -in $HOME/kuberdashcerts/dashboard.csr -signkey $HOME/kuberdashcerts/dashboard.key -out $HOME/kuberdashcerts/dashboard.crt
-	fi
-	kubectl create secret generic kubernetes-dashboard-certs --from-file=$HOME/kuberdashcerts -n kube-system
-}
