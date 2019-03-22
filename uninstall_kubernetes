@@ -5,6 +5,7 @@ kubeadm reset
 sudo yum remove  kubeadm kubelet kubernetes-cni
 sudo rm -rf /etc/kubernetes
 sudo rm -rf /var/lib/etcd
+rm -rf ~/.kube
 
 
 # check if lsof exists
