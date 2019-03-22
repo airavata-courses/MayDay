@@ -52,14 +52,15 @@ then
 
     # add dashboard
     sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+    sudo kubectl patch svc kubernetes-dashboard --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
 	sudo kubectl create serviceaccount dashboard -n default
 	sudo kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
 	secret=`sudo kubectl get secret $(sudo kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode`
 
 	# start dashboard
-	nohup sudo kubectl proxy --address=0.0.0.0 --accept-hosts='.*' &
-	echo $secret
-	echo serving at localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+	#nohup sudo kubectl proxy --address=0.0.0.0 --accept-hosts='.*' &
+	#echo $secret
+	#echo serving at localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 fi
 
 
