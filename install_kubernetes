@@ -43,7 +43,13 @@ then
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
+	
+    # add pod networks
+	sudo kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
+	# print master details
+	sudo kubectl get pods -o wide --all-namespaces
+	
     # add dashboard
     sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
 	sudo kubectl create serviceaccount dashboard -n default
@@ -52,11 +58,6 @@ then
 
 	# start dashboard
 	sudo kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
-    # add pod networks
-	sudo kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-
-	# print master details
-	sudo kubectl get pods -o wide --all-namespaces
 fi
 
 
