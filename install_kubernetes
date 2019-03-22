@@ -26,7 +26,7 @@ EOF
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl enable --now kubelet
 
@@ -49,11 +49,14 @@ then
 	sudo kubectl create serviceaccount dashboard -n default
 	sudo kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
 	sudo kubectl get secret $(sudo kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+
+	# start dashboard
+	sudo kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
     # add pod networks
-	kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+	sudo kubectl apply -f https://docs.projectcalico.org/v3.6/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
 	# print master details
-	kubectl get pods -o wide --all-namespaces
+	sudo kubectl get pods -o wide --all-namespaces
 fi
 
 
