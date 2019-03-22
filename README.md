@@ -1,4 +1,4 @@
-Kubernetes and docker instaler script
+Kubernetes and docker installer script
 
 
 clone this repo and branch
