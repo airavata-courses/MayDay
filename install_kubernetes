@@ -65,7 +65,7 @@ fi
 
 
 makeCert() {
-	if [ -d $HOME/kuberdashcerts ]; 
+	if [ ! -d $HOME/kuberdashcerts ]; 
 	then
 		openssl genrsa -des3 -passout pass:x -out $HOME/kuberdashcerts/dashboard.pass.key 2048
 		openssl rsa -passin pass:x -in dashboard.pass.key -out $HOME/kuberdashcerts/dashboard.key
