@@ -52,6 +52,7 @@ then
 	sudo kubectl get pods -o wide --all-namespaces
 
     # add dashboard
+    makeCert
     sudo kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
     sudo kubectl patch svc kubernetes-dashboard --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]' --namespace=kube-system
 	sudo kubectl create serviceaccount dashboard -n default
@@ -61,3 +62,14 @@ fi
 
 
 
+makeCert() {
+	if [ -d $HOME/kuberdashcerts ]; 
+	then
+		openssl genrsa -des3 -passout pass:x -out $HOME/kuberdashcerts/dashboard.pass.key 2048
+		openssl rsa -passin pass:x -in dashboard.pass.key -out $HOME/kuberdashcerts/dashboard.key
+		rm $HOME/kuberdashcerts/dashboard.pass.key
+		openssl req -new -key $HOME/kuberdashcerts/dashboard.key -out $HOME/kuberdashcerts/dashboard.csr
+		openssl x509 -req -sha256 -days 365 -in $HOME/kuberdashcerts/dashboard.csr -signkey $HOME/kuberdashcerts/dashboard.key -out $HOME/kuberdashcerts/dashboard.crt
+	fi
+	kubectl create secret generic kubernetes-dashboard-certs --from-file=$HOME/kuberdashcerts -n kube-system
+}
