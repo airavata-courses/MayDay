@@ -1,15 +1,41 @@
-<div>
-  Practice Center : {{pratice_center}}
-</div>
-<div>
-  {{address}}
-</div>
-<div>
-  {{phone}}
-</div>
-<div *ngIf="haswebsite == true">
- Website: <a href={{website}}>{{website}}</a>
-</div>
-<div *ngIf="hasemail == true">
-  Email: {{email}}
+<div class="practices-profile-wrapper">
+  <div class="container">
+    <mat-card class="practice-card" *ngFor="let loc of cleanData">
+      <img mat-card-image
+        [src]="'https://www.mapquestapi.com/staticmap/v5/map?key=EvAFDNlMGI6PeGpkR33PAUfF61AvIliz&locations='+loc.lat+','+loc.lon+'&size=500,450&zoom=14&defaultMarker=marker-f06292'" />
+      <mat-card-content>
+        <div class="details">
+          <div class="location-text-container">
+            <div class="icon">
+              <mat-icon>location_on</mat-icon>
+            </div>
+            <div class="location-text">
+              <div class="street">
+                {{loc.visit_address.street}}
+              </div>
+              <div class="city">
+                {{loc.visit_address.city}}
+              </div>
+              <div class="state">
+                {{loc.visit_address.state}}
+              </div>
+              <div class="zip">
+                {{loc.visit_address.zip}}
+              </div>
+            </div>
+          </div>
+          <div class="phones-container">
+            <div class="icon">
+              <mat-icon>phone</mat-icon>
+            </div>
+            <div class="phone-numbers">
+              <div clas="phone" *ngFor="let phone of loc.phones">
+                {{phone.number}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

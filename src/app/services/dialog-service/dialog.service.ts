@@ -10,7 +10,6 @@ export class DialogService {
 
   openDialog(component: any, data: any): void {
     const dialogRef = this.dialog.open(component, {
-      width: '60vw',
       data: data
     });
 

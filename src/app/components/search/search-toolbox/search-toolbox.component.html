@@ -8,10 +8,7 @@
         <mat-hint>Enter keyword</mat-hint>
 
       </mat-form-field>
-      <mat-radio-group>
-        <mat-radio-button value="1">Doctor</mat-radio-button>
-        <mat-radio-button value="2">Drug</mat-radio-button>
-      </mat-radio-group>
+
       <button mat-raised-button (click)="getDoctors()" [disabled]="dataStore.inProgress" >SEARCH</button>
       <mat-progress-spinner
       *ngIf="dataStore.inProgress"

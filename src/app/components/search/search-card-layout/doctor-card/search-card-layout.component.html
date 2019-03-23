@@ -19,7 +19,7 @@
                 <p class="avatar-content" (click)="openDialog('doctor')" >{{data.profile.bio.length > 230 ? data.profile.bio.substring(0, 230) + "..." : data.profile.bio   }}</p>
             </div>
             <div class="e-card-content doc-bio">
-                <button mat-raised-button (click)="openDialog('practice')" >Practices</button>
+                <button mat-raised-button (click)="openDialog('practice')" [disabled]="data.practices.length == 0"> {{data.practices.length == 0 ? 'Not Available' : 'Practices'}}</button>
             </div>
         </div>
     </div>

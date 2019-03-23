@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.practice-card  {
+    margin: 0 1rem 1rem 0;
+    max-width: 25rem;
+}
+
+.details {
+    display: flex;
+}
+
+.location-text-container {
+    width: 73%;
+    display: flex;
+}
+
+.phones-container {
+    display: flex;
+}
+
+.icon {
+    margin-right: 0.4rem;
+    color: #f06292;
+}
