@@ -4,7 +4,7 @@ FROM python:2.7.9
 WORKDIR /server
 
 # Copy contents
-COPY . /server
+COPY . .
 
 # Install dependencies
 RUN pip install -r requirements.txt
