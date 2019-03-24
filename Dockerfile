@@ -7,6 +7,7 @@ WORKDIR /server
 COPY . .
 
 # Install dependencies
+RUN pwd
 RUN pip install -r requirements.txt
 
 # Port to open in Docker
