@@ -1,4 +1,4 @@
-FROM python:2.7.9
+FROM python:3.6
 
 # Create app directory
 WORKDIR /server
@@ -8,7 +8,7 @@ COPY . .
 
 # Install dependencies
 RUN pwd
-RUN pip install -r requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Port to open in Docker
 EXPOSE 7000
