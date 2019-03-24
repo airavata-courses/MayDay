@@ -7,7 +7,7 @@ WORKDIR /server
 COPY . /server
 
 # Install dependencies
-RUN cd server && pip install -r requirements.txt
+RUN sudo pip install -r requirements.txt
 
 # Port to open in Docker
 EXPOSE 7000
