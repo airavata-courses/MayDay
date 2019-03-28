@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purple-microservice
+spec:
+  selector:
+    matchLabels:
+      app: purple-ms
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: purple-ms
+    spec:
+      containers:
+      - name: purple-ms
+        imagePullPolicy: Always
+        image: sanjeevni/purple
+        ports:
+        - containerPort: 3000
