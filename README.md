@@ -5,3 +5,4 @@
 #### Example rest call :-
  . url: https://paas-purple.herokuapp.com/alldoctors
  . post body: {"location":"37.773,-122.413,100","user_location":"37.773,-122.413","skip":"0","limit":"10"}
+
