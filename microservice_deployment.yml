@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rhino-microservice
+spec:
+  selector:
+    matchLabels:
+      app: rhino-ms
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: rhino-ms
+    spec:
+      containers:
+      - name: rhino-ms
+        imagePullPolicy: Always
+        image: sanjeevni/rhino
+        ports:
+        - containerPort: 4200
