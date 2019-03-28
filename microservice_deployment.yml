@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-microservice
+spec:
+  selector:
+    matchLabels:
+      app: blue-ms
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: blue-ms
+    spec:
+      containers:
+      - name: blue-ms
+        imagePullPolicy: Always
+        image: sanjeevni/blue
+        ports:
+        - containerPort: 7000

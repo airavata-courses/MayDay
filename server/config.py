@@ -9,6 +9,5 @@ else:
 
 if(len(sys.argv) >= 3 or sys.argv[2] == "zkserver"):
     ZK = sys.argv[4]
-    print ZK
 else:
     ZK = ZK_DEFAULT
