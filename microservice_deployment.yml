@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: purple-ms
-  replicas: 5
+  replicas: 15
   template:
     metadata:
       labels:
