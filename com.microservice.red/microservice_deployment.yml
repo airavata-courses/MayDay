@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: red-microservice
+spec:
+  selector:
+    matchLabels:
+      app: red-ms
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: red-ms
+    spec:
+      containers:
+      - name: red-ms
+        imagePullPolicy: Always
+        image: sanjeevni/red
+        ports:
+        - containerPort: 8080
