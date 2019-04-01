@@ -7,7 +7,7 @@ WORKDIR /red
 COPY ./ ./
 
 # Change directory to the src files
-RUN cd com.microservice.red 
+WORKDIR /red/com.microservice.red
 
 # Clean project
 RUN mvn clean
