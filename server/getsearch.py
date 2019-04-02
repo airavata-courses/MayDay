@@ -3,8 +3,9 @@ import msgpack
 import falcon
 import time
 from collections import OrderedDict
-from connect import H2Connection as db
 from retrying import retry
+from database import Database
+from historyGetter import histGetter
 
 class GetSearch(object):
     
@@ -12,7 +13,7 @@ class GetSearch(object):
     def parseJson_fromQuery(self, response, userid):
         data ={}
         data["recent_result"] = []
-        for result in json.loads(response):
+        for result in response:
             record = {}
             count = 0
             if(userid  !=""):
@@ -25,20 +26,17 @@ class GetSearch(object):
             data["recent_result"].append(record)
         return data
     
-    @retry(wait_fixed=2000, stop_max_attempt_number=5)
     def on_get(self, req, resp):
         try:
-            #search = Search()
-            ob = db()
-            ob.executeSQL(ob.readSQLFromFile('sanjeevni_db.sql'))
+            db = Database()
+            obj = histGetter(db)
             if "userid" not in req.params:
                 userid = ""
-                ob.executeSQL("SELECT h.search_string , h.endpoint, count(h.search_string) from sanjeevi_search_history as h GROUP BY h.search_string")
+                histList = obj.getHistory()
             else:
                 userid = req.params['userid']
-                ob.executeSQL("SELECT TOP 10 h.search_string , h.endpoint, count(h.search_string) from sanjeevi_search_history as h where h.userid = '"+req.params["userid"]+"' GROUP BY h.search_string")
-            data = self.parseJson_fromQuery(ob.getResponse() ,userid)
-            ob.destroy()
+                histList = obj.getHist(userid)
+            data = self.parseJson_fromQuery(histList ,userid)
             resp.set_header('response', '200 OK')
             resp.set_header('Access-Control-Allow-Origin', '*')
             resp.set_header('Access-Control-Allow-Methods', '*')
@@ -50,3 +48,4 @@ class GetSearch(object):
             resp.status = falcon.HTTP_500
             resp.body = json.dumps({'status': 0, 'message': 'Server Error'})        
                 
+    
