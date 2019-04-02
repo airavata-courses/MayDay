@@ -5,7 +5,7 @@ from zookeeper import ZookeeperHandler
 from falcon_cors import CORS
 from getsearch import GetSearch
 from connect import H2Connection as db
-cors = CORS(allow_origins_list=['http://localhost:3000', 'http://js-168-167.jetstream-cloud.org:4200'],
+cors = CORS(allow_origins_list=['http://localhost:3000', 'http://js-168-167.jetstream-cloud.org:4200', 'http://js-156-182.jetstream-cloud.org:30006'],
             allow_all_headers=True,
             allow_all_methods=True,
 			allow_all_origins=True)
