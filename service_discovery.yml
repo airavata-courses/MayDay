@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: blue-microservice
 spec:
- type: LoadBalancer
+ type: NodePort
  ports:
   - targetPort: 7000
     port: 7000
