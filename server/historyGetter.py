@@ -12,4 +12,4 @@ class histGetter:
 
     def getHist(self, id):
         query = "SELECT h.search_string , h.endpoint, count(h.search_string) from sanjeevi_search_history as h where h.userid = {} GROUP BY h.search_string,h.endpoint LIMIT 10".format(id)
-        return self.db.fetchOne(query)
+        return self.db.fetchAll(query)

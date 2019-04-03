@@ -35,7 +35,7 @@ class GetSearch(object):
                 histList = obj.getHistory()
             else:
                 userid = req.params['userid']
-                histList = obj.getHist(userid)
+                histList =  obj.getHist("'"+userid+"'")
             data = self.parseJson_fromQuery(histList ,userid)
             resp.set_header('response', '200 OK')
             resp.set_header('Access-Control-Allow-Origin', '*')
@@ -46,6 +46,7 @@ class GetSearch(object):
             resp.status = falcon.HTTP_200
         except Exception as e:
             resp.status = falcon.HTTP_500
-            resp.body = json.dumps({'status': 0, 'message': 'Server Error'})        
+            resp.body = json.dumps({'status': 0, 'message': 'Server Error'})   
+     
                 
     
