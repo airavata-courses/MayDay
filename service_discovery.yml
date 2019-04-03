@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: red-microservice
 spec:
- type: LoadBalancer
+ type: NodePort
  ports:
   - targetPort: 8080
     port: 8080
