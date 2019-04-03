@@ -4,10 +4,7 @@ FROM maven:3.6.0-jdk-8
 WORKDIR /red
 
 # Copy contents
-COPY ./ ./
-
-# Change directory to the src files
-WORKDIR /red/com.microservice.red
+COPY ./com.microservice.red ./
 
 # Clean project
 RUN mvn clean
