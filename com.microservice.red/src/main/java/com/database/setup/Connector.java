@@ -1,51 +1,36 @@
 package com.database.setup;
 
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
-
-import org.eclipse.persistence.platform.database.H2Platform;
-
-import com.database.queries.Queries;
+import java.util.Properties;
 
 public class Connector {
 
-	private String CSTRING = "jdbc:h2:./userdb";
-	private String USERNAME = "root";
-	private String PASSWORD = "root";
+	private String CSTRING = "jdbc:postgresql://149.165.170.219:5432/sanjeevnidb";
+	private String USERNAME = "postgres";
+	private String PASSWORD = "password123";
 	public Connection connection;
-	
+
 	public Connector() {
-		
+		Properties props = new Properties();
+		props.setProperty("user", USERNAME);
+		props.setProperty("password", PASSWORD);
+
 		try {
-			Class.forName("org.h2.Driver");
+			Class.forName("org.postgresql.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		try {
-			connection = DriverManager.getConnection(CSTRING);
+			connection = DriverManager.getConnection(CSTRING, props);
 			connection.setAutoCommit(true);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		runSchema();
 	}
-	
+
 	public Connection getConnection() {
 		return this.connection;
-	}
-	
-	private void runSchema() {
-		try {
-			Statement stmt = connection.createStatement();
-			stmt.executeUpdate(Queries.PERSONSCHEMACLEANUP);
-			stmt.executeUpdate(Queries.PERSONSCHEMA);
-			//stmt.execute(Queries.PERSONMOCKDATA);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
