@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: rhino-microservice
 spec:
- type: LoadBalancer
+ type: NodePort
  ports:
   - targetPort: 4200
     port: 4200
