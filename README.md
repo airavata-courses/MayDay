@@ -1,4 +1,4 @@
-### Search management microservice codenamed: Blue
+### Search management microservice codenamed: Blue 
 [![Build Status](https://travis-ci.org/airavata-courses/MayDay.svg?branch=develop-microservice-blue)](https://travis-ci.org/airavata-courses/MayDay)
 ### Make sure you have isolated python environment 
 execute following command to install falcon and setup virtual environment
