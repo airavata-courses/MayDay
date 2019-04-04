@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: blue-ms
-  replicas: 5
+  replicas: 3
   template:
     metadata:
       labels:
